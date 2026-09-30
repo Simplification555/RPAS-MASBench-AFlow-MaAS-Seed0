@@ -20,6 +20,13 @@ from typing import Any
 
 VERSION = "maas_context_guard_v1"
 CONTEXT_LIMIT = 8192
+PROMPT_ADAPTER_PROVENANCE = {
+    "prompt_adapter_origin": "recovered_rpas_working_copy",
+    "helper_source_repository": "Simplification555/RPAS-EC2-A100",
+    "helper_source_commit": "ba1ca711f148642f6e61bb38c52a0e8994e54c98",
+    "helper_source_path": "experiments/external_baselines/masbench_aflow_maas_seed0/experiments",
+    "original_helper_git_commit": None,
+}
 # Qwen3.5-9B is being evaluated with an 8K context.  The native AFlow/MaAS
 # graphs often need a second code-generation or ensemble response, so leaving
 # only ~1.4K output tokens after a 6.8K prompt causes silent truncation and
@@ -85,6 +92,7 @@ def patch_template_directory(path: Path, concise: bool = True) -> dict[str, Any]
             "version": VERSION,
             "path": str(path),
             "concise_prompt_variant": "maas_concise_v2",
+            **PROMPT_ADAPTER_PROVENANCE,
             "prompt_sha256": __import__("hashlib").sha256(prompt_path.read_bytes()).hexdigest(),
             "operator_sha256": __import__("hashlib").sha256(operator_path.read_bytes()).hexdigest(),
         }
@@ -117,6 +125,7 @@ def patch_template_directory(path: Path, concise: bool = True) -> dict[str, Any]
         "version": VERSION,
         "path": str(path),
         "concise_prompt_variant": "maas_concise_v2" if concise else "native_repaired",
+        **PROMPT_ADAPTER_PROVENANCE,
         "prompt_sha256": __import__("hashlib").sha256(prompt_path.read_bytes()).hexdigest(),
         "operator_sha256": __import__("hashlib").sha256(operator_path.read_bytes()).hexdigest(),
     }

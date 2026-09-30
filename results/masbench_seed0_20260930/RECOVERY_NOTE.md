@@ -1,0 +1,7 @@
+# MaAS seed-0 timeout recovery
+
+The first MaAS breadth attempt is preserved at `../masbench_aflow_then_maas_seed0/maas/breadth/seed_0`. It stopped before opening D_test: 17 of 24 D_select predictions were empty, and its run manifest records `status=failed`, `d_test_opened=false`. The runtime adapter limited each multi-call MaAS graph attempt to 180 seconds and retried three times; the empty errors appeared at the corresponding 9-minute intervals. The local model service continued returning successful HTTP responses.
+
+This recovery restarts MaAS from controller training in a fresh output root. It uses the unchanged source commit `56e7392` in the frozen worktree `/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0-maas-frozen-56e7392`, with graph timeout 1500 seconds (the native MaAS MATH limit), request timeout 600 seconds, three sample attempts, and 60-second generated-code execution timeout. The model, 8192 context, 6144 generation ceiling, concurrency 8, dataset splits, seed, native prompt wording, and answer protocol remain fixed. The timeout settings are recorded in the launch log and `runtime_overrides.json`; the request timeout also appears in each copied MaAS model configuration. Earlier AFlow results are linked from their original frozen source and revalidated during aggregation.
+
+This is a runtime adapter configuration correction made before MaAS D_test access. It is not a reuse of the failed controller checkpoint. MaAS results should be labelled as the RPAS-project compatibility/context adapter variant.

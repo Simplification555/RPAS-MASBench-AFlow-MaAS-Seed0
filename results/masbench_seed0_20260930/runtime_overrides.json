@@ -1,0 +1,17 @@
+{
+  "observed_at_utc": "2026-09-29T04:31:41.202270+00:00",
+  "observed_process_pid": 2997499,
+  "source_commit": "56e7392",
+  "source_root": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0-maas-frozen-56e7392",
+  "failed_attempt_root": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/maas/breadth/seed_0",
+  "launcher_path": "/data/jxc/tmp/rpas/maas_timeout_recovery_launch_20260929.sh",
+  "launcher_sha256": "4ffcf7bd39c70e04cbc3c29cb0453a5ec16b3dc3960939c32720e01c452c1729",
+  "environment_overrides": {
+    "RPAS_MAAS_SAMPLE_TIMEOUT_S": "1500",
+    "RPAS_MAAS_REQUEST_TIMEOUT_S": "600",
+    "RPAS_MAAS_SAMPLE_RETRIES": "3",
+    "RPAS_MAAS_CODE_TIMEOUT_S": "60",
+    "RPAS_OUTPUT_ROOT": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929"
+  },
+  "note": "These runtime overrides were read from the live MaAS depth process; the same launcher started all recovery axes."
+}

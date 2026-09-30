@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "errors": [],
+  "run_id": "masbench:maas:parallel:seed_0:masbench_external_protocol_v1",
+  "method": "maas",
+  "axis": "parallel",
+  "seed": 0,
+  "point_summary": {
+    "Q": {
+      "accuracy": 0.18333333333333332,
+      "correct": 11,
+      "tokens_per_example": 39981.816666666666,
+      "calls": 596,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 1.0,
+      "component_accuracy": 0.5625,
+      "mean_score_0_1_2": 1.1166666666666667
+    },
+    "E": {
+      "accuracy": 0.18333333333333332,
+      "correct": 11,
+      "tokens_per_example": 39981.816666666666,
+      "calls": 596,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 1.0,
+      "component_accuracy": 0.5625,
+      "mean_score_0_1_2": 1.1166666666666667
+    }
+  },
+  "checked_at_utc": "2026-09-29T22:21:44.545495+00:00"
+}

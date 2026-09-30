@@ -1,0 +1,392 @@
+{
+  "status": "frozen_before_test_access",
+  "protocol_version": "masbench_external_protocol_v1",
+  "method": "aflow",
+  "axis": "horizon",
+  "seed": 0,
+  "selection_split": "D_select",
+  "test_split": "D_test",
+  "d_test_opened": false,
+  "frozen_at_utc": "2026-09-28T05:44:08.154616+00:00",
+  "selected": {
+    "Q": {
+      "round": 1,
+      "candidate_id": "round_1"
+    },
+    "E": {
+      "round": 1,
+      "candidate_id": "round_1"
+    }
+  },
+  "selection_details": {
+    "selection_rows": [
+      {
+        "round": 1,
+        "status": "evaluated",
+        "candidate_id": "round_1",
+        "native_score": 1.3333333333333333,
+        "score": 0.375,
+        "shared_metrics": {
+          "score": 0.375,
+          "accuracy": 0.375,
+          "correct": 9,
+          "num_examples": 24,
+          "valid_answer_rate": 1.0,
+          "component_accuracy": 0.6739130434782609,
+          "component_correct": 62,
+          "component_total": 92,
+          "mean_score_0_1_2": 1.3333333333333333,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 24,
+        "total_tokens": 105033,
+        "avg_cost": 4376.375,
+        "total_cost": 105033,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 2,
+        "status": "evaluated",
+        "candidate_id": "round_2",
+        "native_score": 0.0,
+        "score": 0.0,
+        "shared_metrics": {
+          "score": 0.0,
+          "accuracy": 0.0,
+          "correct": 0,
+          "num_examples": 24,
+          "valid_answer_rate": 0.0,
+          "component_accuracy": 0.0,
+          "component_correct": 0,
+          "component_total": 92,
+          "mean_score_0_1_2": 0.0,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 103,
+        "total_tokens": 352211,
+        "avg_cost": 14675.458333333334,
+        "total_cost": 352211,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_2/0.00000_20260928_123535.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 3,
+        "status": "evaluated",
+        "candidate_id": "round_3",
+        "native_score": 0.125,
+        "score": 0.0,
+        "shared_metrics": {
+          "score": 0.0,
+          "accuracy": 0.0,
+          "correct": 0,
+          "num_examples": 24,
+          "valid_answer_rate": 0.125,
+          "component_accuracy": 0.10869565217391304,
+          "component_correct": 10,
+          "component_total": 92,
+          "mean_score_0_1_2": 0.125,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 106,
+        "total_tokens": 376982,
+        "avg_cost": 15707.583333333334,
+        "total_cost": 376982,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_3/0.12500_20260928_125007.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 4,
+        "status": "evaluated",
+        "candidate_id": "round_4",
+        "native_score": 1.125,
+        "score": 0.20833333333333334,
+        "shared_metrics": {
+          "score": 0.20833333333333334,
+          "accuracy": 0.20833333333333334,
+          "correct": 5,
+          "num_examples": 24,
+          "valid_answer_rate": 1.0,
+          "component_accuracy": 0.5978260869565217,
+          "component_correct": 55,
+          "component_total": 92,
+          "mean_score_0_1_2": 1.125,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 123,
+        "total_tokens": 364647,
+        "avg_cost": 15193.625,
+        "total_cost": 364647,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_4/1.12500_20260928_130320.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 5,
+        "status": "invalid",
+        "errors": [
+          "AttributeError: module 'workspace.rpas_masbench_native.MATH.workflows.template.operator' has no attribute 'CostManage'"
+        ]
+      },
+      {
+        "round": 6,
+        "status": "evaluated",
+        "candidate_id": "round_6",
+        "native_score": 0.0,
+        "score": 0.0,
+        "shared_metrics": {
+          "score": 0.0,
+          "accuracy": 0.0,
+          "correct": 0,
+          "num_examples": 24,
+          "valid_answer_rate": 0.0,
+          "component_accuracy": 0.0,
+          "component_correct": 0,
+          "component_total": 92,
+          "mean_score_0_1_2": 0.0,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 146,
+        "total_tokens": 342005,
+        "avg_cost": 14250.208333333334,
+        "total_cost": 342005,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_6/0.00000_20260928_131624.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 7,
+        "status": "evaluated",
+        "candidate_id": "round_7",
+        "native_score": 0.0,
+        "score": 0.0,
+        "shared_metrics": {
+          "score": 0.0,
+          "accuracy": 0.0,
+          "correct": 0,
+          "num_examples": 24,
+          "valid_answer_rate": 0.0,
+          "component_accuracy": 0.0,
+          "component_correct": 0,
+          "component_total": 92,
+          "mean_score_0_1_2": 0.0,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 0,
+        "total_tokens": 0,
+        "avg_cost": 0.0,
+        "total_cost": 0,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_7/0.00000_20260928_131636.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 8,
+        "status": "evaluated",
+        "candidate_id": "round_8",
+        "native_score": 1.1666666666666667,
+        "score": 0.20833333333333334,
+        "shared_metrics": {
+          "score": 0.20833333333333334,
+          "accuracy": 0.20833333333333334,
+          "correct": 5,
+          "num_examples": 24,
+          "valid_answer_rate": 1.0,
+          "component_accuracy": 0.5652173913043478,
+          "component_correct": 52,
+          "component_total": 92,
+          "mean_score_0_1_2": 1.1666666666666667,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 152,
+        "total_tokens": 422435,
+        "avg_cost": 17601.458333333332,
+        "total_cost": 422435,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_8/1.16667_20260928_133003.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      },
+      {
+        "round": 9,
+        "status": "evaluated",
+        "candidate_id": "round_9",
+        "native_score": 0.9166666666666666,
+        "score": 0.041666666666666664,
+        "shared_metrics": {
+          "score": 0.041666666666666664,
+          "accuracy": 0.041666666666666664,
+          "correct": 1,
+          "num_examples": 24,
+          "valid_answer_rate": 0.9583333333333334,
+          "component_accuracy": 0.44565217391304346,
+          "component_correct": 41,
+          "component_total": 92,
+          "mean_score_0_1_2": 0.9166666666666666,
+          "answer_parser": "masbench_answer_protocol_v1"
+        },
+        "valid": true,
+        "total_calls": 124,
+        "total_tokens": 382156,
+        "avg_cost": 15923.166666666666,
+        "total_cost": 382156,
+        "cost_unit": "model_tokens",
+        "native_avg_cost": 0.0,
+        "native_total_cost": 0.0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_9/0.91667_20260928_134408.csv",
+          "csv_rows": 24,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        }
+      }
+    ],
+    "quality_point": {
+      "round": 1,
+      "status": "evaluated",
+      "candidate_id": "round_1",
+      "native_score": 1.3333333333333333,
+      "score": 0.375,
+      "shared_metrics": {
+        "score": 0.375,
+        "accuracy": 0.375,
+        "correct": 9,
+        "num_examples": 24,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.6739130434782609,
+        "component_correct": 62,
+        "component_total": 92,
+        "mean_score_0_1_2": 1.3333333333333333,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 24,
+      "total_tokens": 105033,
+      "avg_cost": 4376.375,
+      "total_cost": 105033,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    "efficiency_point": {
+      "round": 1,
+      "status": "evaluated",
+      "candidate_id": "round_1",
+      "native_score": 1.3333333333333333,
+      "score": 0.375,
+      "shared_metrics": {
+        "score": 0.375,
+        "accuracy": 0.375,
+        "correct": 9,
+        "num_examples": 24,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.6739130434782609,
+        "component_correct": 62,
+        "component_total": 92,
+        "mean_score_0_1_2": 1.3333333333333333,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 24,
+      "total_tokens": 105033,
+      "avg_cost": 4376.375,
+      "total_cost": 105033,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    }
+  }
+}

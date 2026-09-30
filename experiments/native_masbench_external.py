@@ -82,6 +82,14 @@ BASELINE_FILES = {
         "maas/ext/maas/benchmark/math.py",
     ),
 }
+RUNTIME_ADAPTER_FILES = {
+    "aflow": ("maas_context_guard.py",),
+    "maas": (
+        "maas_context_guard.py",
+        "maas_prompt_repair.py",
+        "maas_concise_prompts_v2.py",
+    ),
+}
 
 
 def parse_args() -> argparse.Namespace:
@@ -133,6 +141,130 @@ def baseline_commit(source_root: Path, method: str) -> str:
             f"{EXPECTED_BASELINE_COMMITS[method]}"
         )
     return commit
+
+
+def controller_state_sha256(state: dict[str, Any]) -> str:
+    """Hash tensor names, shapes, dtypes, and values independent of torch.save metadata."""
+    digest = hashlib.sha256()
+    for name in sorted(state):
+        tensor = state[name].detach().cpu()
+        try:
+            encoded = json.dumps(
+                [name, str(tensor.dtype), list(tensor.shape), tensor.reshape(-1).tolist()],
+                separators=(",", ":"), allow_nan=False,
+            ).encode("utf-8")
+        except ValueError as exc:
+            raise RuntimeError("MaAS controller state contains nonfinite values") from exc
+        digest.update(len(encoded).to_bytes(8, "big"))
+        digest.update(encoded)
+    return digest.hexdigest()
+
+
+def controller_state_snapshot(controller: Any) -> dict[str, Any]:
+    return {name: tensor.detach().cpu().clone() for name, tensor in controller.state_dict().items()}
+
+
+def controller_update_evidence(
+    before: dict[str, Any], after: dict[str, Any], parameter_names: set[str], optimizer_steps: int,
+) -> dict[str, Any]:
+    """Require a native optimizer step and a changed trainable controller tensor."""
+    if before.keys() != after.keys() or not parameter_names or not parameter_names <= before.keys():
+        raise RuntimeError("MaAS controller parameter layout changed during training")
+    changed = sum(not before[name].equal(after[name]) for name in parameter_names)
+    initial_hash = controller_state_sha256(before)
+    final_hash = controller_state_sha256(after)
+    if optimizer_steps < 1 or changed < 1 or initial_hash == final_hash:
+        raise RuntimeError(
+            f"MaAS controller was not updated: optimizer_steps={optimizer_steps}, "
+            f"changed_parameter_tensors={changed}"
+        )
+    return {
+        "optimizer_steps": optimizer_steps,
+        "parameter_tensors": len(parameter_names),
+        "changed_parameter_tensors": changed,
+        "initial_state_sha256": initial_hash,
+        "final_state_sha256": final_hash,
+    }
+
+
+def maas_training_repeat_evidence(audits: Any, sample: int, examples: int) -> dict[str, int]:
+    """Require observed native training rows from four full repetitions."""
+    if not isinstance(audits, list) or len(audits) != 1 or not isinstance(audits[0], dict):
+        raise RuntimeError("MaAS did not record exactly one native controller training audit")
+    audit = audits[0]
+    expected = {
+        "native_sample_argument": sample,
+        "effective_repetitions": 4,
+        "examples_per_repetition": examples,
+        "observed_result_rows": examples * 4,
+        "completed_repetitions": 4,
+    }
+    if any(type(audit.get(name)) is not int or audit[name] != value for name, value in expected.items()):
+        raise RuntimeError(f"MaAS native controller training repetitions differ from {expected}: {audit}")
+    return dict(expected)
+
+
+def model_asset_provenance(rpas_root: Path, method: str) -> dict[str, Any]:
+    """Record pinned revisions and a matching completed local asset audit, if present."""
+    revisions_path = rpas_root / "deployment/model_revisions.json"
+    specifications = json.loads(revisions_path.read_text(encoding="utf-8"))
+    revisions = {"qwen": os.environ.get("RPAS_MODEL_REVISION")}
+    if method == "maas":
+        revisions["embedding"] = os.environ.get("RPAS_MAAS_EMBEDDING_REVISION")
+    for name, revision in revisions.items():
+        expected = specifications[name]["revision"]
+        if revision != expected:
+            raise ValueError(f"{name} model revision {revision!r} does not match pinned {expected!r}")
+    model_paths = {
+        name: os.environ.get("RPAS_MODEL_PATH" if name == "qwen" else "RPAS_MAAS_EMBEDDING_PATH")
+        for name in revisions
+    }
+    if any(not path or not Path(path).is_dir() for path in model_paths.values()):
+        raise RuntimeError("configured local model or embedding path is missing")
+    provenance: dict[str, Any] = {
+        "revisions_manifest_sha256": sha256_file(revisions_path),
+        "revisions": revisions,
+        "paths": {name: str(Path(path).resolve()) for name, path in model_paths.items()},
+    }
+    report_name = os.environ.get("RPAS_MODEL_VERIFICATION_REPORT")
+    if not report_name:
+        return provenance
+    report_path = Path(report_name).expanduser().resolve()
+    if not report_path.is_file():
+        return provenance
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    if report.get("manifest_sha256") != provenance["revisions_manifest_sha256"]:
+        raise RuntimeError("local model verification report used a different revision manifest")
+    for name, revision in revisions.items():
+        entry = report.get("models", {}).get(name, {})
+        expected_files = {filename: digest for filename, (_, digest) in specifications[name]["files"].items()}
+        if (entry.get("revision") != revision or entry.get("sha256_verified") != expected_files or
+                Path(entry.get("path", "")).resolve() != Path(model_paths[name]).resolve()):
+            raise RuntimeError(f"local model verification report does not verify configured {name} model")
+    provenance["verification_report"] = {
+        "path": str(report_path), "sha256": sha256_file(report_path),
+    }
+    return provenance
+
+
+def run_session_provenance(rpas_root: Path, model_assets: dict[str, Any]) -> dict[str, str]:
+    record_name = os.environ.get("RPAS_RUN_SESSION_RECORD")
+    if not record_name:
+        raise RuntimeError("RPAS_RUN_SESSION_RECORD is required for a formal run")
+    record_path = Path(record_name).expanduser().resolve()
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+    model_report = model_assets.get("verification_report", {})
+    if (record.get("project_root") != str(rpas_root.resolve()) or
+            record.get("model_revision") != model_assets["revisions"]["qwen"] or
+            Path(record.get("model_path", "")).resolve() != Path(model_assets["paths"]["qwen"]) or
+            record.get("model_verification_report_sha256") != model_report.get("sha256")):
+        raise RuntimeError("run session record disagrees with local model provenance")
+    if "embedding" in model_assets["revisions"] and (
+        record.get("embedding_revision") != model_assets["revisions"]["embedding"] or
+        Path(record.get("embedding_path", "")).resolve() != Path(model_assets["paths"]["embedding"])
+    ):
+        raise RuntimeError("run session record disagrees with MaAS embedding provenance")
+    return {"path": str(record_path), "sha256": sha256_file(record_path)}
 
 
 def atomic_dump_json(path: Path, value: Any) -> None:
@@ -621,8 +753,8 @@ def run_maas(
     train_source = repo / "maas/ext/maas/scripts/optimized/MATH/train"
     test_source = repo / "maas/ext/maas/scripts/optimized/MATH/test"
     from maas_context_guard import patch_template_directory
-    prompt_repairs = [patch_template_directory(train_source / "template", concise=True),
-                      patch_template_directory(test_source / "template", concise=True)]
+    prompt_repairs = [patch_template_directory(train_source / "template", concise=False),
+                      patch_template_directory(test_source / "template", concise=False)]
     shutil.copytree(train_source, repo / relative_root / "train", dirs_exist_ok=True)
     shutil.copytree(test_source, repo / relative_root / "test", dirs_exist_ok=True)
     ensure_package_tree(repo / relative_root, repo)
@@ -648,12 +780,41 @@ def run_maas(
         sample=args.maas_samples, round=1, batch_size=args.maas_batch_size,
         lr=0.01, is_textgrad=False,
     )
+    import torch
+
+    before_controller = controller_state_snapshot(optimizer.controller)
+    parameter_names = {name for name, _ in optimizer.controller.named_parameters()}
+    original_step = optimizer.optimizer.step
+    optimizer_steps = 0
+
+    def observed_step(*step_args: Any, **step_kwargs: Any) -> Any:
+        nonlocal optimizer_steps
+        outcome = original_step(*step_args, **step_kwargs)
+        optimizer_steps += 1
+        return outcome
+
+    optimizer.optimizer.step = observed_step
     phase_wall: dict[str, float] = {}
-    with phase_scope("search", phase_wall):
-        optimizer.optimize("Graph")
+    try:
+        with phase_scope("search", phase_wall):
+            optimizer.optimize("Graph")
+    finally:
+        optimizer.optimizer.step = original_step
     checkpoint = repo / relative_root / "train" / "round_1" / f"MATH_controller_sample{args.maas_samples}.pth"
     if not checkpoint.exists():
         raise RuntimeError(f"MaAS native search did not save controller: {checkpoint}")
+    controller_training = controller_update_evidence(
+        before_controller, controller_state_snapshot(optimizer.controller),
+        parameter_names, optimizer_steps,
+    )
+    controller_training["training_repeat_audit"] = maas_training_repeat_evidence(
+        telemetry.get("training_repeat_audit"), args.maas_samples, len(rows["search"]),
+    )
+    checkpoint_state_hash = controller_state_sha256(torch.load(checkpoint, map_location="cpu"))
+    if checkpoint_state_hash != controller_training["final_state_sha256"]:
+        raise RuntimeError("MaAS saved controller differs from trained controller state")
+    controller_training["checkpoint_state_sha256"] = checkpoint_state_hash
+    controller_training["checkpoint_file_sha256"] = sha256_file(checkpoint)
 
     loop = asyncio.new_event_loop()
     try:
@@ -727,6 +888,7 @@ def run_maas(
                       "resource_usage": selection_usage, "output_audit": selection_audit},
         "controller_checkpoint": str(checkpoint),
         "controller_checkpoint_sha256": sha256_file(checkpoint),
+        "controller_training": controller_training,
         "selection_lock": {"path": selection_path.name, "sha256": selection_hash},
         "test": {args.axis: {**test_results["Q"], "Q": test_results["Q"], "E": test_results["E"]}},
         "telemetry": {**telemetry, "context_guard": context_guard.summary() if context_guard is not None else None,
@@ -835,6 +997,8 @@ def main() -> None:
     os.environ["RPAS_MAX_MODEL_LEN"] = str(CONTEXT_LIMIT)
     os.environ["RPAS_MAX_NUM_SEQS"] = os.environ.get("RPAS_MAX_NUM_SEQS", "24")
     os.environ["RPAS_TP_SIZE"] = "1"
+    model_assets = model_asset_provenance(args.rpas_root, args.method)
+    session_record = run_session_provenance(args.rpas_root, model_assets)
     manifest = {
         "protocol_version": PROTOCOL_VERSION,
         "run_id": run_id,
@@ -857,6 +1021,12 @@ def main() -> None:
         "answer_parser_sha256": sha256_file(Path(__file__).with_name("masbench_answer_protocol.py")),
         "runner_sha256": sha256_file(Path(__file__)),
         "base_runner_sha256": sha256_file(Path(__file__).with_name("native_aime_formal.py")),
+        "runtime_adapter_sha256": {
+            name: sha256_file(Path(__file__).with_name(name))
+            for name in RUNTIME_ADAPTER_FILES[args.method]
+        },
+        "model_asset_provenance": model_assets,
+        "run_session_record": session_record,
         "model": MODEL,
         "context_limit": CONTEXT_LIMIT,
         "output_limit": OUTPUT_LIMIT,

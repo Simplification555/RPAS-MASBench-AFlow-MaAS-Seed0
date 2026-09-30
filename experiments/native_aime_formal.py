@@ -953,6 +953,7 @@ def patch_maas_runtime(concurrency: int, max_tokens: int) -> dict[str, int]:
         "completion_truncated": 0,
         "phase_totals": new_phase_totals(),
         "phase_wall_seconds": {},
+        "training_repeat_audit": [],
     }
 
     # Load the same local Qwen tokenizer used by the formal bridge.  The guard
@@ -971,14 +972,32 @@ def patch_maas_runtime(concurrency: int, max_tokens: int) -> dict[str, int]:
     original_test = BaseBenchmark.evaluate_all_problems_test
 
     async def bounded_train(self: Any, data: list[dict[str, Any]], graph: Any, max_concurrent_tasks: int = 30, repetitions: int = 4, is_textgrad: bool = False):
-        return await original_train(
+        # The pinned MaAS run_evaluation passes its `sample` checkpoint label
+        # as the repetitions argument.  Keep sample=1 for the controller ID,
+        # but execute the frozen four native training repetitions explicitly.
+        effective_repetitions = 4
+        results = await original_train(
             self,
             data,
             graph,
             max_concurrent_tasks=concurrency,
-            repetitions=repetitions,
+            repetitions=effective_repetitions,
             is_textgrad=is_textgrad,
         )
+        expected_rows = len(data) * effective_repetitions
+        if len(results) != expected_rows:
+            raise RuntimeError(
+                f"MaAS training completed {len(results)} rows; expected {expected_rows} "
+                f"for {effective_repetitions} repetitions"
+            )
+        usage["training_repeat_audit"].append({
+            "native_sample_argument": repetitions,
+            "effective_repetitions": effective_repetitions,
+            "examples_per_repetition": len(data),
+            "observed_result_rows": len(results),
+            "completed_repetitions": effective_repetitions,
+        })
+        return results
 
     async def bounded_test(self: Any, data: list[dict[str, Any]], graph: Any, max_concurrent_tasks: int = 10):
         return await original_test(self, data, graph, max_concurrent_tasks=concurrency)
@@ -1019,7 +1038,7 @@ def patch_maas_runtime(concurrency: int, max_tokens: int) -> dict[str, int]:
         effective_timeout = min(float(timeout), code_timeout)
         try:
             future = loop.run_in_executor(executor, run_code, code)
-            return await asyncio.wait_for(future, timeout=effective_timeout)
+            result = await asyncio.wait_for(future, timeout=effective_timeout)
         except asyncio.TimeoutError:
             for process in getattr(executor, "_processes", {}).values():
                 process.terminate()
@@ -1030,6 +1049,7 @@ def patch_maas_runtime(concurrency: int, max_tokens: int) -> dict[str, int]:
             return "Error", f"Unknown error: {exc}"
         else:
             executor.shutdown(wait=True, cancel_futures=False)
+            return result
 
     TrainProgrammer.exec_code = bounded_exec_code
     TestProgrammer.exec_code = bounded_exec_code

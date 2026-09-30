@@ -1,0 +1,890 @@
+{
+  "schema_version": "masbench_published_verification_v1",
+  "passed": true,
+  "host_quality_gate_reexecuted": false,
+  "token_verification": "Recorded prompt/completion counts, phase sums, point totals and summary arithmetic; no retokenization.",
+  "errors": [],
+  "runs": {
+    "aflow/breadth": {
+      "run_id": "masbench:aflow:breadth:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 9,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "aflow/breadth/seed_0/aflow_test/Q/0.76667_20260928_050642.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "aflow/breadth/seed_0/aflow_test/E/0.80000_20260928_052628.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_1/0.66667_20260928_030536.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 1,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_2/0.00000_20260928_032519.csv",
+          "rows": 24,
+          "failures": [
+            {
+              "row": 16,
+              "kind": "runtime_failure"
+            }
+          ],
+          "failure_fraction": 0.041666666666666664,
+          "round": 2,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_3/0.58333_20260928_033807.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 3,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_4/0.83333_20260928_034516.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 4,
+          "selected": true
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_5/0.66667_20260928_035803.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 5,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_6/0.66667_20260928_040732.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 6,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_7/0.66667_20260928_041821.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 7,
+          "selected": false
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_8/0.75000_20260928_042939.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 8,
+          "selected": true
+        },
+        {
+          "csv": "aflow/breadth/seed_0/aflow_selection/round_9/0.66667_20260928_044613.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 9,
+          "selected": false
+        }
+      ],
+      "recorded_total_tokens": 9212845
+    },
+    "aflow/depth": {
+      "run_id": "masbench:aflow:depth:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 9,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "aflow/depth/seed_0/aflow_test/Q/0.63333_20260928_100140.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "aflow/depth/seed_0/aflow_test/E/0.70000_20260928_104916.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_1/1.00000_20260928_072247.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 1,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_2/1.16667_20260928_074001.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 2,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_3/1.33333_20260928_075706.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 3,
+          "selected": true
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_4/0.91667_20260928_080009.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 4,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_5/1.25000_20260928_081605.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 5,
+          "selected": true
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_6/1.00000_20260928_082641.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 6,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_7/0.91667_20260928_083654.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 7,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_8/0.91667_20260928_084448.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 8,
+          "selected": false
+        },
+        {
+          "csv": "aflow/depth/seed_0/aflow_selection/round_9/1.08333_20260928_090323.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 9,
+          "selected": false
+        }
+      ],
+      "recorded_total_tokens": 9443811
+    },
+    "aflow/horizon": {
+      "run_id": "masbench:aflow:horizon:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 8,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "aflow/horizon/seed_0/aflow_test/Q/0.83333_20260928_135840.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "aflow/horizon/seed_0/aflow_test/Q/0.83333_20260928_135840.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 1,
+          "selected": true
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_2/0.00000_20260928_123535.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 2,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_3/0.12500_20260928_125007.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 3,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_4/1.12500_20260928_130320.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 4,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_6/0.00000_20260928_131624.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 6,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_7/0.00000_20260928_131636.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 7,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_8/1.16667_20260928_133003.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 8,
+          "selected": false
+        },
+        {
+          "csv": "aflow/horizon/seed_0/aflow_selection/round_9/0.91667_20260928_134408.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 9,
+          "selected": false
+        }
+      ],
+      "recorded_total_tokens": 5034771
+    },
+    "aflow/parallel": {
+      "run_id": "masbench:aflow:parallel:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 9,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "aflow/parallel/seed_0/aflow_test/Q/1.05000_20260928_221327.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "aflow/parallel/seed_0/aflow_test/E/1.00000_20260928_222212.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_1/1.04167_20260928_175033.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 1,
+          "selected": true
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_2/0.00000_20260928_175511.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 2,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_3/0.95833_20260928_181814.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 3,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_4/0.95833_20260928_184620.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 4,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_5/0.95833_20260928_191249.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 5,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_6/0.00000_20260928_193419.csv",
+          "rows": 24,
+          "failures": [
+            {
+              "row": 1,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 2,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 3,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 4,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 5,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 6,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 7,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 8,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 9,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 10,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 11,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 12,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 13,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 14,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 15,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 16,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 17,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 18,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 19,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 20,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 21,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 22,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 23,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 24,
+              "kind": "attribute_error"
+            }
+          ],
+          "failure_fraction": 1.0,
+          "round": 6,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_7/0.00000_20260928_201409.csv",
+          "rows": 24,
+          "failures": [
+            {
+              "row": 1,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 2,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 3,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 4,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 5,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 6,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 7,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 8,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 9,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 10,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 11,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 12,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 13,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 14,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 15,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 16,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 17,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 18,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 19,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 20,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 21,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 22,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 23,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 24,
+              "kind": "attribute_error"
+            }
+          ],
+          "failure_fraction": 1.0,
+          "round": 7,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_8/0.00000_20260928_204710.csv",
+          "rows": 24,
+          "failures": [
+            {
+              "row": 1,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 2,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 3,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 4,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 5,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 6,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 7,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 8,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 9,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 10,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 11,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 12,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 13,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 14,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 15,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 16,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 17,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 18,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 19,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 20,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 21,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 22,
+              "kind": "runtime_failure"
+            },
+            {
+              "row": 23,
+              "kind": "attribute_error"
+            },
+            {
+              "row": 24,
+              "kind": "attribute_error"
+            }
+          ],
+          "failure_fraction": 1.0,
+          "round": 8,
+          "selected": false
+        },
+        {
+          "csv": "aflow/parallel/seed_0/aflow_selection/round_9/1.08333_20260928_211700.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 9,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 13821748
+    },
+    "aflow/robustness": {
+      "run_id": "masbench:aflow:robustness:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 6,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "aflow/robustness/seed_0/aflow_test/Q/0.71667_20260928_233800.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "aflow/robustness/seed_0/aflow_test/Q/0.71667_20260928_233800.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_1/0.37500_20260928_230422.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 1,
+          "selected": false
+        },
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_2/0.33333_20260928_230648.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 2,
+          "selected": false
+        },
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_3/0.95833_20260928_230922.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 3,
+          "selected": true
+        },
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_4/0.50000_20260928_231555.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 4,
+          "selected": false
+        },
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_5/0.83333_20260928_232103.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 5,
+          "selected": false
+        },
+        {
+          "csv": "aflow/robustness/seed_0/aflow_selection/round_8/0.54167_20260928_232741.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "round": 8,
+          "selected": false
+        }
+      ],
+      "recorded_total_tokens": 3652940
+    },
+    "maas/breadth": {
+      "run_id": "masbench:maas:breadth:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 1,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "maas/breadth/seed_0/maas_repo/workspace/rpas_masbench_native/breadth/seed_0/MATH/test/round_1/0.70000_20260929_111343.csv",
+          "rows": 60,
+          "failures": [
+            {
+              "row": 39,
+              "kind": "empty_prediction"
+            }
+          ],
+          "failure_fraction": 0.016666666666666666
+        },
+        "E": {
+          "csv": "maas/breadth/seed_0/maas_repo/workspace/rpas_masbench_native/breadth/seed_0/MATH/test/round_1/0.70000_20260929_111343.csv",
+          "rows": 60,
+          "failures": [
+            {
+              "row": 39,
+              "kind": "empty_prediction"
+            }
+          ],
+          "failure_fraction": 0.016666666666666666
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "maas/breadth/seed_0/maas_repo/workspace/rpas_masbench_native/breadth/seed_0/MATH/test/round_1/0.66667_20260929_084846.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 9927166
+    },
+    "maas/depth": {
+      "run_id": "masbench:maas:depth:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 1,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "maas/depth/seed_0/maas_repo/workspace/rpas_masbench_native/depth/seed_0/MATH/test/round_1/0.60000_20260929_183715.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "maas/depth/seed_0/maas_repo/workspace/rpas_masbench_native/depth/seed_0/MATH/test/round_1/0.60000_20260929_183715.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "maas/depth/seed_0/maas_repo/workspace/rpas_masbench_native/depth/seed_0/MATH/test/round_1/1.16667_20260929_163103.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 8869211
+    },
+    "maas/horizon": {
+      "run_id": "masbench:maas:horizon:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 1,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "maas/horizon/seed_0/maas_repo/workspace/rpas_masbench_native/horizon/seed_0/MATH/test/round_1/0.90000_20260930_004322.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "maas/horizon/seed_0/maas_repo/workspace/rpas_masbench_native/horizon/seed_0/MATH/test/round_1/0.90000_20260930_004322.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "maas/horizon/seed_0/maas_repo/workspace/rpas_masbench_native/horizon/seed_0/MATH/test/round_1/1.37500_20260929_231521.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 8263906
+    },
+    "maas/parallel": {
+      "run_id": "masbench:maas:parallel:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 1,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.11667_20260930_062143.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.11667_20260930_062143.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.12500_20260930_051314.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 7565017
+    },
+    "maas/robustness": {
+      "run_id": "masbench:maas:robustness:seed_0:masbench_external_protocol_v1",
+      "selection_csvs_recomputed": 1,
+      "final_prediction_audit": {
+        "Q": {
+          "csv": "maas/robustness/seed_0/maas_repo/workspace/rpas_masbench_native/robustness/seed_0/MATH/test/round_1/0.18333_20260930_122305.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        },
+        "E": {
+          "csv": "maas/robustness/seed_0/maas_repo/workspace/rpas_masbench_native/robustness/seed_0/MATH/test/round_1/0.18333_20260930_122305.csv",
+          "rows": 60,
+          "failures": [],
+          "failure_fraction": 0.0
+        }
+      },
+      "selection_prediction_audit": [
+        {
+          "csv": "maas/robustness/seed_0/maas_repo/workspace/rpas_masbench_native/robustness/seed_0/MATH/test/round_1/0.08333_20260930_111150.csv",
+          "rows": 24,
+          "failures": [],
+          "failure_fraction": 0.0,
+          "selected": true
+        }
+      ],
+      "recorded_total_tokens": 8266283
+    }
+  },
+  "direct_files_verified": 61,
+  "archive_files_verified": 3622
+}

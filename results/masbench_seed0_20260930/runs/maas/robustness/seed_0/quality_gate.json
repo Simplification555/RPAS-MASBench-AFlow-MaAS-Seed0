@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "errors": [],
+  "run_id": "masbench:maas:robustness:seed_0:masbench_external_protocol_v1",
+  "method": "maas",
+  "axis": "robustness",
+  "seed": 0,
+  "point_summary": {
+    "Q": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "tokens_per_example": 49349.416666666664,
+      "calls": 540,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 0.21666666666666667,
+      "component_accuracy": 0.02619047619047619,
+      "mean_score_0_1_2": 0.18333333333333332
+    },
+    "E": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "tokens_per_example": 49349.416666666664,
+      "calls": 540,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 0.21666666666666667,
+      "component_accuracy": 0.02619047619047619,
+      "mean_score_0_1_2": 0.18333333333333332
+    }
+  },
+  "checked_at_utc": "2026-09-30T04:23:07.097539+00:00"
+}

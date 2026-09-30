@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "errors": [],
+  "run_id": "masbench:aflow:robustness:seed_0:masbench_external_protocol_v1",
+  "method": "aflow",
+  "axis": "robustness",
+  "seed": 0,
+  "point_summary": {
+    "Q": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "tokens_per_example": 10857.3,
+      "calls": 183,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 0.7833333333333333,
+      "component_accuracy": 0.23095238095238096,
+      "mean_score_0_1_2": 0.7166666666666667
+    },
+    "E": {
+      "accuracy": 0.0,
+      "correct": 0,
+      "tokens_per_example": 10857.3,
+      "calls": 183,
+      "failure_fraction": 0.0,
+      "parser_valid_rate": 0.7833333333333333,
+      "component_accuracy": 0.23095238095238096,
+      "mean_score_0_1_2": 0.7166666666666667
+    }
+  },
+  "checked_at_utc": "2026-09-28T15:38:01.117824+00:00"
+}

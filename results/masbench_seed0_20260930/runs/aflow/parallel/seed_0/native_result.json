@@ -1,0 +1,1245 @@
+{
+  "method": "aflow",
+  "search_entrypoint": "AFlow native MCTS Optimizer.optimize(Graph)",
+  "native_method_config": {
+    "dataset": "MATH",
+    "question_type": "math",
+    "operators": [
+      "Custom",
+      "ScEnsemble",
+      "Programmer"
+    ],
+    "sample": 4,
+    "check_convergence": false,
+    "initial_round": 1,
+    "max_rounds": 8,
+    "validation_rounds": 1,
+    "mutation_generation_retry_cap": 8
+  },
+  "search_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selection_rows": [
+    {
+      "round": 1,
+      "status": "evaluated",
+      "candidate_id": "round_1",
+      "native_score": 1.0416666666666667,
+      "score": 0.20833333333333334,
+      "shared_metrics": {
+        "score": 0.20833333333333334,
+        "accuracy": 0.20833333333333334,
+        "correct": 5,
+        "num_examples": 24,
+        "valid_answer_rate": 0.9583333333333334,
+        "component_accuracy": 0.5405405405405406,
+        "component_correct": 40,
+        "component_total": 74,
+        "mean_score_0_1_2": 1.0416666666666667,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 24,
+      "total_tokens": 103016,
+      "avg_cost": 4292.333333333333,
+      "total_cost": 103016,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_1/1.04167_20260928_175033.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 2,
+      "status": "evaluated",
+      "candidate_id": "round_2",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 49,
+      "total_tokens": 114989,
+      "avg_cost": 4791.208333333333,
+      "total_cost": 114989,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_2/0.00000_20260928_175511.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 3,
+      "status": "evaluated",
+      "candidate_id": "round_3",
+      "native_score": 0.9583333333333334,
+      "score": 0.125,
+      "shared_metrics": {
+        "score": 0.125,
+        "accuracy": 0.125,
+        "correct": 3,
+        "num_examples": 24,
+        "valid_answer_rate": 0.9166666666666666,
+        "component_accuracy": 0.527027027027027,
+        "component_correct": 39,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.9583333333333334,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 122,
+      "total_tokens": 540697,
+      "avg_cost": 22529.041666666668,
+      "total_cost": 540697,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_3/0.95833_20260928_181814.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 4,
+      "status": "evaluated",
+      "candidate_id": "round_4",
+      "native_score": 0.9583333333333334,
+      "score": 0.16666666666666666,
+      "shared_metrics": {
+        "score": 0.16666666666666666,
+        "accuracy": 0.16666666666666666,
+        "correct": 4,
+        "num_examples": 24,
+        "valid_answer_rate": 0.9166666666666666,
+        "component_accuracy": 0.527027027027027,
+        "component_correct": 39,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.9583333333333334,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 147,
+      "total_tokens": 713256,
+      "avg_cost": 29719.0,
+      "total_cost": 713256,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_4/0.95833_20260928_184620.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 5,
+      "status": "evaluated",
+      "candidate_id": "round_5",
+      "native_score": 0.9583333333333334,
+      "score": 0.20833333333333334,
+      "shared_metrics": {
+        "score": 0.20833333333333334,
+        "accuracy": 0.20833333333333334,
+        "correct": 5,
+        "num_examples": 24,
+        "valid_answer_rate": 0.875,
+        "component_accuracy": 0.5,
+        "component_correct": 37,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.9583333333333334,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 145,
+      "total_tokens": 653640,
+      "avg_cost": 27235.0,
+      "total_cost": 653640,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_5/0.95833_20260928_191249.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 6,
+      "status": "invalid",
+      "candidate_id": "round_6",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": false,
+      "total_calls": 355,
+      "total_tokens": 730683,
+      "avg_cost": 30445.125,
+      "total_cost": 730683,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_6/0.00000_20260928_193419.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 2,
+        "failure_fraction": 0.08333333333333333,
+        "sample_timeouts": 2,
+        "failure_markers": [
+          "AFlow sample timeout",
+          "AFlow sample timeout"
+        ]
+      },
+      "errors": [
+        "failure rate 8.3% exceeds 5%"
+      ]
+    },
+    {
+      "round": 7,
+      "status": "invalid",
+      "candidate_id": "round_7",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": false,
+      "total_calls": 342,
+      "total_tokens": 1124441,
+      "avg_cost": 46851.708333333336,
+      "total_cost": 1124441,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_7/0.00000_20260928_201409.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 7,
+        "failure_fraction": 0.2916666666666667,
+        "sample_timeouts": 7,
+        "failure_markers": [
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout"
+        ]
+      },
+      "errors": [
+        "failure rate 29.2% exceeds 5%"
+      ]
+    },
+    {
+      "round": 8,
+      "status": "invalid",
+      "candidate_id": "round_8",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 74,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": false,
+      "total_calls": 349,
+      "total_tokens": 1008892,
+      "avg_cost": 42037.166666666664,
+      "total_cost": 1008892,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_8/0.00000_20260928_204710.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 6,
+        "failure_fraction": 0.25,
+        "sample_timeouts": 6,
+        "failure_markers": [
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout",
+          "AFlow sample timeout"
+        ]
+      },
+      "errors": [
+        "failure rate 25.0% exceeds 5%"
+      ]
+    },
+    {
+      "round": 9,
+      "status": "evaluated",
+      "candidate_id": "round_9",
+      "native_score": 1.0833333333333333,
+      "score": 0.25,
+      "shared_metrics": {
+        "score": 0.25,
+        "accuracy": 0.25,
+        "correct": 6,
+        "num_examples": 24,
+        "valid_answer_rate": 0.9583333333333334,
+        "component_accuracy": 0.527027027027027,
+        "component_correct": 39,
+        "component_total": 74,
+        "mean_score_0_1_2": 1.0833333333333333,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 187,
+      "total_tokens": 737410,
+      "avg_cost": 30725.416666666668,
+      "total_cost": 737410,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_9/1.08333_20260928_211700.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    }
+  ],
+  "selected_round": {
+    "round": 9,
+    "status": "evaluated",
+    "candidate_id": "round_9",
+    "native_score": 1.0833333333333333,
+    "score": 0.25,
+    "shared_metrics": {
+      "score": 0.25,
+      "accuracy": 0.25,
+      "correct": 6,
+      "num_examples": 24,
+      "valid_answer_rate": 0.9583333333333334,
+      "component_accuracy": 0.527027027027027,
+      "component_correct": 39,
+      "component_total": 74,
+      "mean_score_0_1_2": 1.0833333333333333,
+      "answer_parser": "masbench_answer_protocol_v1"
+    },
+    "valid": true,
+    "total_calls": 187,
+    "total_tokens": 737410,
+    "avg_cost": 30725.416666666668,
+    "total_cost": 737410,
+    "cost_unit": "model_tokens",
+    "native_avg_cost": 0.0,
+    "native_total_cost": 0.0,
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_9/1.08333_20260928_211700.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  },
+  "selected_efficiency_round": {
+    "round": 1,
+    "status": "evaluated",
+    "candidate_id": "round_1",
+    "native_score": 1.0416666666666667,
+    "score": 0.20833333333333334,
+    "shared_metrics": {
+      "score": 0.20833333333333334,
+      "accuracy": 0.20833333333333334,
+      "correct": 5,
+      "num_examples": 24,
+      "valid_answer_rate": 0.9583333333333334,
+      "component_accuracy": 0.5405405405405406,
+      "component_correct": 40,
+      "component_total": 74,
+      "mean_score_0_1_2": 1.0416666666666667,
+      "answer_parser": "masbench_answer_protocol_v1"
+    },
+    "valid": true,
+    "total_calls": 24,
+    "total_tokens": 103016,
+    "avg_cost": 4292.333333333333,
+    "total_cost": 103016,
+    "cost_unit": "model_tokens",
+    "native_avg_cost": 0.0,
+    "native_total_cost": 0.0,
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_selection/round_1/1.04167_20260928_175033.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  },
+  "selection_lock": {
+    "path": "selection_frozen.json",
+    "sha256": "4b38fc3815cd1d5bb958593ac139d4b0ab28232d84f9dd38971febb82adf1d95"
+  },
+  "test": {
+    "Q": {
+      "score": 0.2,
+      "accuracy": 0.2,
+      "correct": 12,
+      "num_examples": 60,
+      "valid_answer_rate": 0.9166666666666666,
+      "component_accuracy": 0.5416666666666666,
+      "component_correct": 130,
+      "component_total": 240,
+      "mean_score_0_1_2": 1.05,
+      "answer_parser": "masbench_answer_protocol_v1",
+      "native_score": 1.05,
+      "avg_cost": 29194.116666666665,
+      "total_cost": 1751647,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "resource_usage": {
+        "calls": 474,
+        "prompt_tokens": 656651,
+        "completion_tokens": 1094996,
+        "total_tokens": 1751647,
+        "failed_calls": 0
+      },
+      "calls": 474,
+      "prompt_tokens": 656651,
+      "completion_tokens": 1094996,
+      "total_tokens": 1751647,
+      "failed_calls": 0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_test/Q/1.05000_20260928_221327.csv",
+        "csv_rows": 60,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      },
+      "selected_round": 9,
+      "operating_point": "Q"
+    },
+    "E": {
+      "score": 0.16666666666666666,
+      "accuracy": 0.16666666666666666,
+      "correct": 10,
+      "num_examples": 60,
+      "valid_answer_rate": 0.9166666666666666,
+      "component_accuracy": 0.5166666666666667,
+      "component_correct": 124,
+      "component_total": 240,
+      "mean_score_0_1_2": 1.0,
+      "answer_parser": "masbench_answer_protocol_v1",
+      "native_score": 1.0,
+      "avg_cost": 3665.0666666666666,
+      "total_cost": 219904,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "resource_usage": {
+        "calls": 60,
+        "prompt_tokens": 42368,
+        "completion_tokens": 177536,
+        "total_tokens": 219904,
+        "failed_calls": 0
+      },
+      "calls": 60,
+      "prompt_tokens": 42368,
+      "completion_tokens": 177536,
+      "total_tokens": 219904,
+      "failed_calls": 0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/parallel/seed_0/aflow_test/E/1.00000_20260928_222212.csv",
+        "csv_rows": 60,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      },
+      "selected_round": 1,
+      "operating_point": "E"
+    }
+  },
+  "telemetry": {
+    "calls": 3973,
+    "prompt_tokens": 5063889,
+    "completion_tokens": 8757859,
+    "total_tokens": 13821748,
+    "failed_calls": 0,
+    "sample_timeouts": 35,
+    "phase_totals": {
+      "search": {
+        "calls": 1719,
+        "prompt_tokens": 2251666,
+        "completion_tokens": 3871507,
+        "total_tokens": 6123173,
+        "failed_calls": 0
+      },
+      "select": {
+        "calls": 1720,
+        "prompt_tokens": 2113204,
+        "completion_tokens": 3613820,
+        "total_tokens": 5727024,
+        "failed_calls": 0
+      },
+      "test:aime_2025": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:aime_2026": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:parallel:Q": {
+        "calls": 474,
+        "prompt_tokens": 656651,
+        "completion_tokens": 1094996,
+        "total_tokens": 1751647,
+        "failed_calls": 0
+      },
+      "test:parallel:E": {
+        "calls": 60,
+        "prompt_tokens": 42368,
+        "completion_tokens": 177536,
+        "total_tokens": 219904,
+        "failed_calls": 0
+      }
+    },
+    "finish_reason_counts": {
+      "stop": 3264,
+      "length": 674
+    },
+    "completion_truncated": 674,
+    "phase_wall_seconds": {
+      "search": 13600.748124459991,
+      "select": 12693.301409262,
+      "test:parallel:Q": 3386.970782871009,
+      "test:parallel:E": 524.9291247199872
+    },
+    "context_guard": {
+      "version": "maas_context_guard_v1",
+      "target_input_tokens": 4096,
+      "context_limit": 8192,
+      "calls_seen": 3973,
+      "compacted_calls": 400,
+      "original_input_tokens": 8093446,
+      "final_input_tokens": 5102438,
+      "compacted_input_tokens": 2991008,
+      "max_input_tokens_seen": 24028,
+      "events_sample": [
+        {
+          "compacted": true,
+          "original_input_tokens": 23588,
+          "final_input_tokens": 3970,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 23429,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5040,
+          "final_input_tokens": 3821,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10027,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8516,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13220,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9837,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15701,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19740,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19192,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17808,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11246,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16803,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5068,
+          "final_input_tokens": 4027,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13080,
+          "final_input_tokens": 3692,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17006,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12142,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10227,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18442,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17619,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13847,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17586,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19105,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 14472,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19446,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15717,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7206,
+          "final_input_tokens": 4010,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5638,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11393,
+          "final_input_tokens": 3319,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13639,
+          "final_input_tokens": 3659,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13832,
+          "final_input_tokens": 3605,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13294,
+          "final_input_tokens": 3429,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13872,
+          "final_input_tokens": 3905,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19371,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19787,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12365,
+          "final_input_tokens": 4062,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5268,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7638,
+          "final_input_tokens": 2646,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19173,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13666,
+          "final_input_tokens": 3582,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19486,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13153,
+          "final_input_tokens": 3020,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16236,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10009,
+          "final_input_tokens": 3674,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13369,
+          "final_input_tokens": 3090,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12612,
+          "final_input_tokens": 3527,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19500,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19443,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19212,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18444,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13965,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15286,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18232,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18923,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13434,
+          "final_input_tokens": 3327,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19487,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8802,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19443,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7439,
+          "final_input_tokens": 3647,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19213,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16008,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19370,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16887,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13738,
+          "final_input_tokens": 3628,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8105,
+          "final_input_tokens": 3169,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19368,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8128,
+          "final_input_tokens": 3049,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16289,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16669,
+          "final_input_tokens": 3481,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19787,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7427,
+          "final_input_tokens": 2390,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19173,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18571,
+          "final_input_tokens": 3970,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7438,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4286,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5497,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6013,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4757,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4179,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4958,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7073,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7150,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6976,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6733,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6993,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18769,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4149,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7127,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6815,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5792,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7126,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6801,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4407,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5247,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6954,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4782,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6801,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4813,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4563,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7127,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        }
+      ]
+    },
+    "wall_time_seconds": 30210.2500500679
+  },
+  "controls": {
+    "model": "Qwen/Qwen3.5-9B",
+    "endpoint": "http://127.0.0.1:18080/v1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 6144,
+    "thinking": false,
+    "concurrency": 8,
+    "max_model_len": 8192,
+    "max_num_seqs": 24,
+    "tensor_parallel_size": 1,
+    "data_seed": 2026,
+    "search_seed": 0,
+    "search_size": 24,
+    "selection_size": 24,
+    "test_size": 60,
+    "native_search_round_limit": 8,
+    "native_search_mutation_retry_cap": 8,
+    "maas_samples": null,
+    "maas_batch_size": null,
+    "gold_protocol": "masbench_answer_protocol_v1; exact match + component accuracy + 0/1/2 ordinal score",
+    "selection_split": "D_select",
+    "test_split": "D_test"
+  },
+  "run_id": "masbench:aflow:parallel:seed_0:masbench_external_protocol_v1"
+}

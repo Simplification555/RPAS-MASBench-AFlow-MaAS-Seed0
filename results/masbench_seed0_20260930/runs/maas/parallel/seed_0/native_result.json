@@ -1,0 +1,923 @@
+{
+  "method": "maas",
+  "search_entrypoint": "MaAS native Optimizer.optimize(Graph)",
+  "native_method_config": {
+    "dataset": "MATH",
+    "question_type": "math",
+    "operators": [
+      "Generate",
+      "GenerateCoT",
+      "MultiGenerateCoT",
+      "ScEnsemble",
+      "Programmer",
+      "SelfRefine",
+      "EarlyStop"
+    ],
+    "controller_sample": 1,
+    "round": 1,
+    "batch_size": 8,
+    "learning_rate": 0.01,
+    "is_textgrad": false,
+    "training_repetitions": 4
+  },
+  "selection": {
+    "score": 0.20833333333333334,
+    "native_score": 1.125,
+    "accuracy": 0.20833333333333334,
+    "correct": 5,
+    "num_examples": 24,
+    "valid_answer_rate": 0.9583333333333334,
+    "component_accuracy": 0.581081081081081,
+    "component_correct": 43,
+    "component_total": 74,
+    "mean_score_0_1_2": 1.125,
+    "answer_parser": "masbench_answer_protocol_v1",
+    "split": "D_select",
+    "resource_usage": {
+      "calls": 236,
+      "prompt_tokens": 406053,
+      "completion_tokens": 632139,
+      "total_tokens": 1038192,
+      "failed_calls": 0
+    },
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.12500_20260930_051314.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  },
+  "controller_checkpoint": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/train/round_1/MATH_controller_sample1.pth",
+  "controller_checkpoint_sha256": "1c9573e94c305e817297749de765af1d47846dd1089749d22adc33e6a14e4e7c",
+  "controller_training": {
+    "optimizer_steps": 12,
+    "parameter_tensors": 16,
+    "changed_parameter_tensors": 16,
+    "initial_state_sha256": "b95f33aef4b13409821ba39fe1b303c739195dfd470d9a1e65973c01fd9ac408",
+    "final_state_sha256": "6aad1bc8b658685090751901c61241939b4331e60fc658b237720cbfd9cb7bad",
+    "training_repeat_audit": {
+      "native_sample_argument": 1,
+      "effective_repetitions": 4,
+      "examples_per_repetition": 24,
+      "observed_result_rows": 96,
+      "completed_repetitions": 4
+    },
+    "checkpoint_state_sha256": "6aad1bc8b658685090751901c61241939b4331e60fc658b237720cbfd9cb7bad",
+    "checkpoint_file_sha256": "1c9573e94c305e817297749de765af1d47846dd1089749d22adc33e6a14e4e7c"
+  },
+  "selection_lock": {
+    "path": "selection_frozen.json",
+    "sha256": "f6b6068f1157b4fa3286e57aedbef034f594a5b529a8e754c061251d557acc63"
+  },
+  "test": {
+    "parallel": {
+      "score": 0.18333333333333332,
+      "accuracy": 0.18333333333333332,
+      "correct": 11,
+      "num_examples": 60,
+      "valid_answer_rate": 1.0,
+      "component_accuracy": 0.5625,
+      "component_correct": 135,
+      "component_total": 240,
+      "mean_score_0_1_2": 1.1166666666666667,
+      "answer_parser": "masbench_answer_protocol_v1",
+      "native_score": 1.1166666666666667,
+      "avg_cost": 39981.816666666666,
+      "total_cost": 2398909,
+      "cost_unit": "model_tokens",
+      "resource_usage": {
+        "calls": 596,
+        "prompt_tokens": 1080701,
+        "completion_tokens": 1318208,
+        "total_tokens": 2398909,
+        "failed_calls": 0
+      },
+      "calls": 596,
+      "prompt_tokens": 1080701,
+      "completion_tokens": 1318208,
+      "total_tokens": 2398909,
+      "failed_calls": 0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.11667_20260930_062143.csv",
+        "csv_rows": 60,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      },
+      "selected_controller": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/train/round_1/MATH_controller_sample1.pth",
+      "operating_point": "Q",
+      "Q": {
+        "score": 0.18333333333333332,
+        "accuracy": 0.18333333333333332,
+        "correct": 11,
+        "num_examples": 60,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.5625,
+        "component_correct": 135,
+        "component_total": 240,
+        "mean_score_0_1_2": 1.1166666666666667,
+        "answer_parser": "masbench_answer_protocol_v1",
+        "native_score": 1.1166666666666667,
+        "avg_cost": 39981.816666666666,
+        "total_cost": 2398909,
+        "cost_unit": "model_tokens",
+        "resource_usage": {
+          "calls": 596,
+          "prompt_tokens": 1080701,
+          "completion_tokens": 1318208,
+          "total_tokens": 2398909,
+          "failed_calls": 0
+        },
+        "calls": 596,
+        "prompt_tokens": 1080701,
+        "completion_tokens": 1318208,
+        "total_tokens": 2398909,
+        "failed_calls": 0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.11667_20260930_062143.csv",
+          "csv_rows": 60,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        },
+        "selected_controller": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/train/round_1/MATH_controller_sample1.pth",
+        "operating_point": "Q"
+      },
+      "E": {
+        "score": 0.18333333333333332,
+        "accuracy": 0.18333333333333332,
+        "correct": 11,
+        "num_examples": 60,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.5625,
+        "component_correct": 135,
+        "component_total": 240,
+        "mean_score_0_1_2": 1.1166666666666667,
+        "answer_parser": "masbench_answer_protocol_v1",
+        "native_score": 1.1166666666666667,
+        "avg_cost": 39981.816666666666,
+        "total_cost": 2398909,
+        "cost_unit": "model_tokens",
+        "resource_usage": {
+          "calls": 596,
+          "prompt_tokens": 1080701,
+          "completion_tokens": 1318208,
+          "total_tokens": 2398909,
+          "failed_calls": 0
+        },
+        "calls": 596,
+        "prompt_tokens": 1080701,
+        "completion_tokens": 1318208,
+        "total_tokens": 2398909,
+        "failed_calls": 0,
+        "output_audit": {
+          "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/test/round_1/1.11667_20260930_062143.csv",
+          "csv_rows": 60,
+          "empty_predictions": 0,
+          "failure_predictions": 0,
+          "failure_fraction": 0.0,
+          "sample_timeouts": 0,
+          "failure_markers": []
+        },
+        "selected_controller": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/workspace/rpas_masbench_native/parallel/seed_0/MATH/train/round_1/MATH_controller_sample1.pth",
+        "operating_point": "E",
+        "same_candidate_as": "Q"
+      }
+    }
+  },
+  "telemetry": {
+    "calls": 1717,
+    "prompt_tokens": 3106782,
+    "completion_tokens": 4458235,
+    "total_tokens": 7565017,
+    "failed_calls": 0,
+    "finish_reason_counts": {
+      "stop": 1387,
+      "length": 328
+    },
+    "completion_truncated": 328,
+    "phase_totals": {
+      "search": {
+        "calls": 885,
+        "prompt_tokens": 1620028,
+        "completion_tokens": 2507888,
+        "total_tokens": 4127916,
+        "failed_calls": 0
+      },
+      "select": {
+        "calls": 236,
+        "prompt_tokens": 406053,
+        "completion_tokens": 632139,
+        "total_tokens": 1038192,
+        "failed_calls": 0
+      },
+      "test:aime_2025": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:aime_2026": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:parallel": {
+        "calls": 596,
+        "prompt_tokens": 1080701,
+        "completion_tokens": 1318208,
+        "total_tokens": 2398909,
+        "failed_calls": 0
+      }
+    },
+    "phase_wall_seconds": {
+      "search": 14038.507246936962,
+      "select": 2147.505230210023,
+      "test:parallel": 4108.512336342013
+    },
+    "training_repeat_audit": [
+      {
+        "native_sample_argument": 1,
+        "effective_repetitions": 4,
+        "examples_per_repetition": 24,
+        "observed_result_rows": 96,
+        "completed_repetitions": 4
+      }
+    ],
+    "context_guard": {
+      "version": "maas_context_guard_v1",
+      "target_input_tokens": 4096,
+      "context_limit": 8192,
+      "calls_seen": 1717,
+      "compacted_calls": 389,
+      "original_input_tokens": 6465442,
+      "final_input_tokens": 3109246,
+      "compacted_input_tokens": 3356196,
+      "max_input_tokens_seen": 55087,
+      "events_sample": [
+        {
+          "compacted": true,
+          "original_input_tokens": 6404,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7613,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7914,
+          "final_input_tokens": 3584,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4322,
+          "final_input_tokens": 4075,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11038,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6566,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9182,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9240,
+          "final_input_tokens": 4094,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7194,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17677,
+          "final_input_tokens": 3501,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5560,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17598,
+          "final_input_tokens": 4087,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7195,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 31782,
+          "final_input_tokens": 3202,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9670,
+          "final_input_tokens": 3973,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10864,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11201,
+          "final_input_tokens": 3234,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4824,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8231,
+          "final_input_tokens": 3099,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 16781,
+          "final_input_tokens": 3700,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5602,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 19988,
+          "final_input_tokens": 3605,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7085,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 24996,
+          "final_input_tokens": 3970,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 27148,
+          "final_input_tokens": 4093,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6333,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 22169,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18161,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7095,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 23137,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 24943,
+          "final_input_tokens": 3581,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 35662,
+          "final_input_tokens": 3694,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 17196,
+          "final_input_tokens": 3457,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5828,
+          "final_input_tokens": 3973,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7221,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9938,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4698,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4717,
+          "final_input_tokens": 2159,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4554,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11849,
+          "final_input_tokens": 3970,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8391,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6939,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9369,
+          "final_input_tokens": 3130,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12895,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7170,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 8630,
+          "final_input_tokens": 3260,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10002,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15268,
+          "final_input_tokens": 3543,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12114,
+          "final_input_tokens": 3970,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7682,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 24080,
+          "final_input_tokens": 3136,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9413,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7539,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 25755,
+          "final_input_tokens": 3683,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5974,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 28861,
+          "final_input_tokens": 4092,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13236,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10801,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4778,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5685,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4568,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12792,
+          "final_input_tokens": 3789,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 11295,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4219,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 18402,
+          "final_input_tokens": 3663,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 12844,
+          "final_input_tokens": 3255,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9834,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6631,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7051,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 22432,
+          "final_input_tokens": 4096,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 30880,
+          "final_input_tokens": 4095,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15781,
+          "final_input_tokens": 3948,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 39339,
+          "final_input_tokens": 3335,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5524,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21180,
+          "final_input_tokens": 3664,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9422,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4201,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5766,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9463,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4194,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7123,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 9964,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 10757,
+          "final_input_tokens": 3443,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7123,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6926,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 15606,
+          "final_input_tokens": 2964,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 13070,
+          "final_input_tokens": 3098,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6782,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7728,
+          "final_input_tokens": 3323,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5481,
+          "final_input_tokens": 3166,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 27125,
+          "final_input_tokens": 3524,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 37958,
+          "final_input_tokens": 4091,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7239,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5002,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7346,
+          "final_input_tokens": 2254,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 44521,
+          "final_input_tokens": 3596,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4783,
+          "final_input_tokens": 3122,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7172,
+          "final_input_tokens": 3735,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5338,
+          "final_input_tokens": 3974,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6761,
+          "final_input_tokens": 3975,
+          "requested_max_tokens": 6144
+        }
+      ]
+    },
+    "wall_time_seconds": 20299.91646528244
+  },
+  "prompt_repairs": [
+    {
+      "version": "maas_context_guard_v1",
+      "path": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/maas/ext/maas/scripts/optimized/MATH/train/template",
+      "concise_prompt_variant": "native_repaired",
+      "prompt_adapter_origin": "recovered_rpas_working_copy",
+      "helper_source_repository": "Simplification555/RPAS-EC2-A100",
+      "helper_source_commit": "ba1ca711f148642f6e61bb38c52a0e8994e54c98",
+      "helper_source_path": "experiments/external_baselines/masbench_aflow_maas_seed0/experiments",
+      "original_helper_git_commit": null,
+      "prompt_sha256": "6bb0ed182312c0afaad23cfe4988305a48a0e6b1284892dca602128989525b34",
+      "operator_sha256": "84b19e1fcc8cf600d5df1764edcb0c986dd29fdacb1cea931cce173bdbf5360d"
+    },
+    {
+      "version": "maas_context_guard_v1",
+      "path": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/parallel/seed_0/maas_repo/maas/ext/maas/scripts/optimized/MATH/test/template",
+      "concise_prompt_variant": "native_repaired",
+      "prompt_adapter_origin": "recovered_rpas_working_copy",
+      "helper_source_repository": "Simplification555/RPAS-EC2-A100",
+      "helper_source_commit": "ba1ca711f148642f6e61bb38c52a0e8994e54c98",
+      "helper_source_path": "experiments/external_baselines/masbench_aflow_maas_seed0/experiments",
+      "original_helper_git_commit": null,
+      "prompt_sha256": "6bb0ed182312c0afaad23cfe4988305a48a0e6b1284892dca602128989525b34",
+      "operator_sha256": "84b19e1fcc8cf600d5df1764edcb0c986dd29fdacb1cea931cce173bdbf5360d"
+    }
+  ],
+  "controls": {
+    "model": "Qwen/Qwen3.5-9B",
+    "endpoint": "http://127.0.0.1:18080/v1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 6144,
+    "thinking": false,
+    "concurrency": 8,
+    "max_model_len": 8192,
+    "max_num_seqs": 24,
+    "tensor_parallel_size": 1,
+    "data_seed": 2026,
+    "search_seed": 0,
+    "search_size": 24,
+    "selection_size": 24,
+    "test_size": 60,
+    "native_search_round_limit": 1,
+    "native_search_mutation_retry_cap": null,
+    "maas_samples": 1,
+    "maas_batch_size": 8,
+    "gold_protocol": "masbench_answer_protocol_v1; exact match + component accuracy + 0/1/2 ordinal score",
+    "selection_split": "D_select",
+    "test_split": "D_test"
+  },
+  "run_id": "masbench:maas:parallel:seed_0:masbench_external_protocol_v1"
+}

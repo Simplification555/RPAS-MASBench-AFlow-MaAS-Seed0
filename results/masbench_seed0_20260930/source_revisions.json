@@ -1,0 +1,18 @@
+{
+  "run_sources": {
+    "aflow": {
+      "frozen_root": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0-aflow-frozen-f9ec43e",
+      "commit": "f9ec43eb27d489fbcc3f909ce7898cc3aeeb9952"
+    },
+    "maas": {
+      "frozen_root": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0-maas-frozen-56e7392",
+      "commit": "56e73924da7a5a46dc6d6430f9d00daf588ca6fc"
+    }
+  },
+  "upstream_commits": {
+    "aflow": "3f457218fc716093fe53f6df8a5d5e6379d66346",
+    "maas": "987f3c1bc9a96e844fe090db3791446e3ef0f5c7"
+  },
+  "completed_at_local": "2026-09-30T12:23:09+08:00",
+  "export_note": "Original file bytes preserved. The recovery/aflow root symlink was resolved. Git internals, bytecode/cache directories, image assets, index.html and unrelated upstream .pth checkpoints were omitted. All trained MASBench controller checkpoints are retained. Absolute paths are historical evidence, resolved through file_index.json during offline verification."
+}

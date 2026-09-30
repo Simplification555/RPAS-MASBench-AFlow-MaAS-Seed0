@@ -1,5 +1,6 @@
 import hashlib
 import json
+import os
 import unittest
 from argparse import Namespace
 from pathlib import Path
@@ -7,7 +8,11 @@ from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
 from build_search_select_manifest import AXES, build_manifest
-from native_masbench_external import freeze_selection, load_test_after_selection, validate_search_select
+from native_masbench_external import (
+    controller_update_evidence, freeze_selection, load_test_after_selection,
+    maas_training_repeat_evidence, model_asset_provenance, run_session_provenance,
+    validate_search_select,
+)
 from masbench_data_protocol import canonical_gold, expected_horizon_width, validate_frozen_splits
 
 
@@ -26,7 +31,102 @@ def _hash(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+class _FakeTensor:
+    dtype = "float32"
+
+    def __init__(self, values):
+        self.values = tuple(values)
+        self.shape = (len(self.values),)
+
+    def detach(self):
+        return self
+
+    def cpu(self):
+        return self
+
+    def reshape(self, _shape):
+        return self
+
+    def tolist(self):
+        return list(self.values)
+
+    def equal(self, other):
+        return self.values == other.values
+
+
 class NativeMasBenchProtocolTests(unittest.TestCase):
+    def test_model_and_session_provenance_require_matching_verified_assets(self):
+        with TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            deployment = root / "deployment"
+            deployment.mkdir()
+            specifications = {
+                "qwen": {"revision": "qwen-revision", "files": {"qwen.bin": [3, "q" * 64]}},
+                "embedding": {"revision": "embedding-revision", "files": {"embed.bin": [3, "e" * 64]}},
+            }
+            revisions_path = deployment / "model_revisions.json"
+            revisions_path.write_text(json.dumps(specifications), encoding="utf-8")
+            qwen_path, embedding_path = root / "qwen", root / "embedding"
+            qwen_path.mkdir()
+            embedding_path.mkdir()
+            report = {
+                "manifest_sha256": _hash(revisions_path),
+                "models": {
+                    "qwen": {"revision": "qwen-revision", "path": str(qwen_path),
+                             "sha256_verified": {"qwen.bin": "q" * 64}},
+                    "embedding": {"revision": "embedding-revision", "path": str(embedding_path),
+                                  "sha256_verified": {"embed.bin": "e" * 64}},
+                },
+            }
+            report_path = root / "verified.json"
+            report_path.write_text(json.dumps(report), encoding="utf-8")
+            session_path = root / "session.json"
+            session_path.write_text(json.dumps({
+                "project_root": str(root), "model_revision": "qwen-revision",
+                "model_path": str(qwen_path), "embedding_revision": "embedding-revision",
+                "embedding_path": str(embedding_path),
+                "model_verification_report_sha256": _hash(report_path),
+            }), encoding="utf-8")
+            variables = {
+                "RPAS_MODEL_REVISION": "qwen-revision",
+                "RPAS_MAAS_EMBEDDING_REVISION": "embedding-revision",
+                "RPAS_MODEL_PATH": str(qwen_path),
+                "RPAS_MAAS_EMBEDDING_PATH": str(embedding_path),
+                "RPAS_MODEL_VERIFICATION_REPORT": str(report_path),
+                "RPAS_RUN_SESSION_RECORD": str(session_path),
+            }
+            with patch.dict(os.environ, variables):
+                assets = model_asset_provenance(root, "maas")
+                session = run_session_provenance(root, assets)
+                self.assertEqual(session["sha256"], _hash(session_path))
+                self.assertEqual(assets["verification_report"]["sha256"], _hash(report_path))
+                report["models"]["qwen"]["sha256_verified"]["qwen.bin"] = "wrong"
+                report_path.write_text(json.dumps(report), encoding="utf-8")
+                with self.assertRaisesRegex(RuntimeError, "does not verify configured qwen"):
+                    model_asset_provenance(root, "maas")
+
+    def test_controller_training_requires_step_and_changed_trainable_parameter(self):
+        before = {"weight": _FakeTensor([1.0, 2.0]), "buffer": _FakeTensor([1.0])}
+        updated = {"weight": _FakeTensor([1.1, 2.0]), "buffer": _FakeTensor([1.0])}
+        evidence = controller_update_evidence(before, updated, {"weight"}, 1)
+        self.assertEqual(evidence["optimizer_steps"], 1)
+        self.assertEqual(evidence["changed_parameter_tensors"], 1)
+        self.assertNotEqual(evidence["initial_state_sha256"], evidence["final_state_sha256"])
+        with self.assertRaisesRegex(RuntimeError, "was not updated"):
+            controller_update_evidence(before, updated, {"weight"}, 0)
+        with self.assertRaisesRegex(RuntimeError, "was not updated"):
+            controller_update_evidence(before, before, {"weight"}, 1)
+
+    def test_maas_training_repetitions_require_observed_full_result_rows(self):
+        audit = {
+            "native_sample_argument": 1, "effective_repetitions": 4,
+            "examples_per_repetition": 24, "observed_result_rows": 96,
+            "completed_repetitions": 4,
+        }
+        self.assertEqual(maas_training_repeat_evidence([audit], 1, 24), audit)
+        with self.assertRaisesRegex(RuntimeError, "repetitions differ"):
+            maas_training_repeat_evidence([{**audit, "observed_result_rows": 24}], 1, 24)
+
     def test_gold_is_canonical_and_restricted_to_z23(self):
         self.assertEqual(canonical_gold("02<<horizon>>004"), "2<<horizon>>4")
         with self.assertRaises(ValueError):

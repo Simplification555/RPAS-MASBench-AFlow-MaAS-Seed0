@@ -1,0 +1,41 @@
+{
+  "status": "frozen_before_test_access",
+  "protocol_version": "masbench_external_protocol_v1",
+  "method": "maas",
+  "axis": "robustness",
+  "seed": 0,
+  "selection_split": "D_select",
+  "test_split": "D_test",
+  "d_test_opened": false,
+  "frozen_at_utc": "2026-09-30T03:11:50.107136+00:00",
+  "selected": {
+    "Q": {
+      "controller_checkpoint": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/robustness/seed_0/maas_repo/workspace/rpas_masbench_native/robustness/seed_0/MATH/train/round_1/MATH_controller_sample1.pth",
+      "controller_checkpoint_sha256": "cd717f4ca2ff4cc59144471203088cdfd177e6fda902d0deddb13f38e0c3b4f5"
+    }
+  },
+  "selection_details": {
+    "selection": {
+      "score": 0.0,
+      "accuracy": 0.0,
+      "correct": 0,
+      "num_examples": 24,
+      "valid_answer_rate": 0.08333333333333333,
+      "component_accuracy": 0.022727272727272728,
+      "component_correct": 2,
+      "component_total": 88,
+      "mean_score_0_1_2": 0.08333333333333333,
+      "answer_parser": "masbench_answer_protocol_v1"
+    },
+    "native_selection_score": 0.08333333333333333,
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_maas_recovery_seed0_20260929/maas/robustness/seed_0/maas_repo/workspace/rpas_masbench_native/robustness/seed_0/MATH/test/round_1/0.08333_20260930_111150.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  }
+}

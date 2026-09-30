@@ -1,0 +1,732 @@
+{
+  "method": "aflow",
+  "search_entrypoint": "AFlow native MCTS Optimizer.optimize(Graph)",
+  "native_method_config": {
+    "dataset": "MATH",
+    "question_type": "math",
+    "operators": [
+      "Custom",
+      "ScEnsemble",
+      "Programmer"
+    ],
+    "sample": 4,
+    "check_convergence": false,
+    "initial_round": 1,
+    "max_rounds": 8,
+    "validation_rounds": 1,
+    "mutation_generation_retry_cap": 8
+  },
+  "search_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "selection_rows": [
+    {
+      "round": 1,
+      "status": "evaluated",
+      "candidate_id": "round_1",
+      "native_score": 1.3333333333333333,
+      "score": 0.375,
+      "shared_metrics": {
+        "score": 0.375,
+        "accuracy": 0.375,
+        "correct": 9,
+        "num_examples": 24,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.6739130434782609,
+        "component_correct": 62,
+        "component_total": 92,
+        "mean_score_0_1_2": 1.3333333333333333,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 24,
+      "total_tokens": 105033,
+      "avg_cost": 4376.375,
+      "total_cost": 105033,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 2,
+      "status": "evaluated",
+      "candidate_id": "round_2",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 92,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 103,
+      "total_tokens": 352211,
+      "avg_cost": 14675.458333333334,
+      "total_cost": 352211,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_2/0.00000_20260928_123535.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 3,
+      "status": "evaluated",
+      "candidate_id": "round_3",
+      "native_score": 0.125,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.125,
+        "component_accuracy": 0.10869565217391304,
+        "component_correct": 10,
+        "component_total": 92,
+        "mean_score_0_1_2": 0.125,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 106,
+      "total_tokens": 376982,
+      "avg_cost": 15707.583333333334,
+      "total_cost": 376982,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_3/0.12500_20260928_125007.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 4,
+      "status": "evaluated",
+      "candidate_id": "round_4",
+      "native_score": 1.125,
+      "score": 0.20833333333333334,
+      "shared_metrics": {
+        "score": 0.20833333333333334,
+        "accuracy": 0.20833333333333334,
+        "correct": 5,
+        "num_examples": 24,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.5978260869565217,
+        "component_correct": 55,
+        "component_total": 92,
+        "mean_score_0_1_2": 1.125,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 123,
+      "total_tokens": 364647,
+      "avg_cost": 15193.625,
+      "total_cost": 364647,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_4/1.12500_20260928_130320.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 5,
+      "status": "invalid",
+      "errors": [
+        "AttributeError: module 'workspace.rpas_masbench_native.MATH.workflows.template.operator' has no attribute 'CostManage'"
+      ]
+    },
+    {
+      "round": 6,
+      "status": "evaluated",
+      "candidate_id": "round_6",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 92,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 146,
+      "total_tokens": 342005,
+      "avg_cost": 14250.208333333334,
+      "total_cost": 342005,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_6/0.00000_20260928_131624.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 7,
+      "status": "evaluated",
+      "candidate_id": "round_7",
+      "native_score": 0.0,
+      "score": 0.0,
+      "shared_metrics": {
+        "score": 0.0,
+        "accuracy": 0.0,
+        "correct": 0,
+        "num_examples": 24,
+        "valid_answer_rate": 0.0,
+        "component_accuracy": 0.0,
+        "component_correct": 0,
+        "component_total": 92,
+        "mean_score_0_1_2": 0.0,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 0,
+      "total_tokens": 0,
+      "avg_cost": 0.0,
+      "total_cost": 0,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_7/0.00000_20260928_131636.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 8,
+      "status": "evaluated",
+      "candidate_id": "round_8",
+      "native_score": 1.1666666666666667,
+      "score": 0.20833333333333334,
+      "shared_metrics": {
+        "score": 0.20833333333333334,
+        "accuracy": 0.20833333333333334,
+        "correct": 5,
+        "num_examples": 24,
+        "valid_answer_rate": 1.0,
+        "component_accuracy": 0.5652173913043478,
+        "component_correct": 52,
+        "component_total": 92,
+        "mean_score_0_1_2": 1.1666666666666667,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 152,
+      "total_tokens": 422435,
+      "avg_cost": 17601.458333333332,
+      "total_cost": 422435,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_8/1.16667_20260928_133003.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    },
+    {
+      "round": 9,
+      "status": "evaluated",
+      "candidate_id": "round_9",
+      "native_score": 0.9166666666666666,
+      "score": 0.041666666666666664,
+      "shared_metrics": {
+        "score": 0.041666666666666664,
+        "accuracy": 0.041666666666666664,
+        "correct": 1,
+        "num_examples": 24,
+        "valid_answer_rate": 0.9583333333333334,
+        "component_accuracy": 0.44565217391304346,
+        "component_correct": 41,
+        "component_total": 92,
+        "mean_score_0_1_2": 0.9166666666666666,
+        "answer_parser": "masbench_answer_protocol_v1"
+      },
+      "valid": true,
+      "total_calls": 124,
+      "total_tokens": 382156,
+      "avg_cost": 15923.166666666666,
+      "total_cost": 382156,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_9/0.91667_20260928_134408.csv",
+        "csv_rows": 24,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      }
+    }
+  ],
+  "selected_round": {
+    "round": 1,
+    "status": "evaluated",
+    "candidate_id": "round_1",
+    "native_score": 1.3333333333333333,
+    "score": 0.375,
+    "shared_metrics": {
+      "score": 0.375,
+      "accuracy": 0.375,
+      "correct": 9,
+      "num_examples": 24,
+      "valid_answer_rate": 1.0,
+      "component_accuracy": 0.6739130434782609,
+      "component_correct": 62,
+      "component_total": 92,
+      "mean_score_0_1_2": 1.3333333333333333,
+      "answer_parser": "masbench_answer_protocol_v1"
+    },
+    "valid": true,
+    "total_calls": 24,
+    "total_tokens": 105033,
+    "avg_cost": 4376.375,
+    "total_cost": 105033,
+    "cost_unit": "model_tokens",
+    "native_avg_cost": 0.0,
+    "native_total_cost": 0.0,
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  },
+  "selected_efficiency_round": {
+    "round": 1,
+    "status": "evaluated",
+    "candidate_id": "round_1",
+    "native_score": 1.3333333333333333,
+    "score": 0.375,
+    "shared_metrics": {
+      "score": 0.375,
+      "accuracy": 0.375,
+      "correct": 9,
+      "num_examples": 24,
+      "valid_answer_rate": 1.0,
+      "component_accuracy": 0.6739130434782609,
+      "component_correct": 62,
+      "component_total": 92,
+      "mean_score_0_1_2": 1.3333333333333333,
+      "answer_parser": "masbench_answer_protocol_v1"
+    },
+    "valid": true,
+    "total_calls": 24,
+    "total_tokens": 105033,
+    "avg_cost": 4376.375,
+    "total_cost": 105033,
+    "cost_unit": "model_tokens",
+    "native_avg_cost": 0.0,
+    "native_total_cost": 0.0,
+    "output_audit": {
+      "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_selection/round_1/1.33333_20260928_122133.csv",
+      "csv_rows": 24,
+      "empty_predictions": 0,
+      "failure_predictions": 0,
+      "failure_fraction": 0.0,
+      "sample_timeouts": 0,
+      "failure_markers": []
+    }
+  },
+  "selection_lock": {
+    "path": "selection_frozen.json",
+    "sha256": "c3180519e30c125e239c73d56898152d92be6f27f5c6fc0609038655ca9f46aa"
+  },
+  "test": {
+    "Q": {
+      "score": 0.13333333333333333,
+      "accuracy": 0.13333333333333333,
+      "correct": 8,
+      "num_examples": 60,
+      "valid_answer_rate": 0.7,
+      "component_accuracy": 0.29791666666666666,
+      "component_correct": 143,
+      "component_total": 480,
+      "mean_score_0_1_2": 0.8333333333333334,
+      "answer_parser": "masbench_answer_protocol_v1",
+      "native_score": 0.8333333333333334,
+      "avg_cost": 6482.416666666667,
+      "total_cost": 388945,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "resource_usage": {
+        "calls": 60,
+        "prompt_tokens": 112504,
+        "completion_tokens": 276441,
+        "total_tokens": 388945,
+        "failed_calls": 0
+      },
+      "calls": 60,
+      "prompt_tokens": 112504,
+      "completion_tokens": 276441,
+      "total_tokens": 388945,
+      "failed_calls": 0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_test/Q/0.83333_20260928_135840.csv",
+        "csv_rows": 60,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      },
+      "selected_round": 1,
+      "operating_point": "Q"
+    },
+    "E": {
+      "score": 0.13333333333333333,
+      "accuracy": 0.13333333333333333,
+      "correct": 8,
+      "num_examples": 60,
+      "valid_answer_rate": 0.7,
+      "component_accuracy": 0.29791666666666666,
+      "component_correct": 143,
+      "component_total": 480,
+      "mean_score_0_1_2": 0.8333333333333334,
+      "answer_parser": "masbench_answer_protocol_v1",
+      "native_score": 0.8333333333333334,
+      "avg_cost": 6482.416666666667,
+      "total_cost": 388945,
+      "cost_unit": "model_tokens",
+      "native_avg_cost": 0.0,
+      "native_total_cost": 0.0,
+      "resource_usage": {
+        "calls": 60,
+        "prompt_tokens": 112504,
+        "completion_tokens": 276441,
+        "total_tokens": 388945,
+        "failed_calls": 0
+      },
+      "calls": 60,
+      "prompt_tokens": 112504,
+      "completion_tokens": 276441,
+      "total_tokens": 388945,
+      "failed_calls": 0,
+      "output_audit": {
+        "csv": "/data/jxc/RPAS-MASBench-AFlow-MaAS-Seed0/outputs/masbench_aflow_then_maas_seed0/aflow/horizon/seed_0/aflow_test/Q/0.83333_20260928_135840.csv",
+        "csv_rows": 60,
+        "empty_predictions": 0,
+        "failure_predictions": 0,
+        "failure_fraction": 0.0,
+        "sample_timeouts": 0,
+        "failure_markers": []
+      },
+      "selected_round": 1,
+      "operating_point": "E",
+      "same_candidate_as": "Q"
+    }
+  },
+  "telemetry": {
+    "calls": 1640,
+    "prompt_tokens": 1894438,
+    "completion_tokens": 3140333,
+    "total_tokens": 5034771,
+    "failed_calls": 0,
+    "sample_timeouts": 0,
+    "phase_totals": {
+      "search": {
+        "calls": 802,
+        "prompt_tokens": 926267,
+        "completion_tokens": 1374090,
+        "total_tokens": 2300357,
+        "failed_calls": 0
+      },
+      "select": {
+        "calls": 778,
+        "prompt_tokens": 855667,
+        "completion_tokens": 1489802,
+        "total_tokens": 2345469,
+        "failed_calls": 0
+      },
+      "test:aime_2025": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:aime_2026": {
+        "calls": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "total_tokens": 0,
+        "failed_calls": 0
+      },
+      "test:horizon:Q": {
+        "calls": 60,
+        "prompt_tokens": 112504,
+        "completion_tokens": 276441,
+        "total_tokens": 388945,
+        "failed_calls": 0
+      }
+    },
+    "finish_reason_counts": {
+      "stop": 1532,
+      "length": 108
+    },
+    "completion_truncated": 108,
+    "phase_wall_seconds": {
+      "search": 5244.382680184033,
+      "select": 5242.453003628994,
+      "test:horizon:Q": 872.8055769099738
+    },
+    "context_guard": {
+      "version": "maas_context_guard_v1",
+      "target_input_tokens": 4096,
+      "context_limit": 8192,
+      "calls_seen": 1640,
+      "compacted_calls": 25,
+      "original_input_tokens": 2134397,
+      "final_input_tokens": 1894438,
+      "compacted_input_tokens": 239959,
+      "max_input_tokens_seen": 21358,
+      "events_sample": [
+        {
+          "compacted": true,
+          "original_input_tokens": 21005,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21173,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4797,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4543,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5458,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5629,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 21358,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4651,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4854,
+          "final_input_tokens": 3971,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4584,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4422,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 5065,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 7894,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 6104,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        },
+        {
+          "compacted": true,
+          "original_input_tokens": 4123,
+          "final_input_tokens": 3972,
+          "requested_max_tokens": 6144
+        }
+      ]
+    },
+    "wall_time_seconds": 11363.375146627426
+  },
+  "controls": {
+    "model": "Qwen/Qwen3.5-9B",
+    "endpoint": "http://127.0.0.1:18080/v1",
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_tokens": 6144,
+    "thinking": false,
+    "concurrency": 8,
+    "max_model_len": 8192,
+    "max_num_seqs": 24,
+    "tensor_parallel_size": 1,
+    "data_seed": 2026,
+    "search_seed": 0,
+    "search_size": 24,
+    "selection_size": 24,
+    "test_size": 60,
+    "native_search_round_limit": 8,
+    "native_search_mutation_retry_cap": 8,
+    "maas_samples": null,
+    "maas_batch_size": null,
+    "gold_protocol": "masbench_answer_protocol_v1; exact match + component accuracy + 0/1/2 ordinal score",
+    "selection_split": "D_select",
+    "test_split": "D_test"
+  },
+  "run_id": "masbench:aflow:horizon:seed_0:masbench_external_protocol_v1"
+}

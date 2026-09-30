@@ -1,0 +1,266 @@
+{
+  "schema_version": "masbench_single_seed_summary_v1",
+  "seed": 0,
+  "axes": [
+    "breadth",
+    "depth",
+    "horizon",
+    "parallel",
+    "robustness"
+  ],
+  "methods": {
+    "aflow": {
+      "axes": {
+        "breadth": {
+          "Q": {
+            "accuracy": 0.38333333333333336,
+            "tokens_per_example": 20342.533333333333,
+            "component_accuracy": 0.38333333333333336,
+            "mean_score_0_1_2": 0.7666666666666667
+          },
+          "E": {
+            "accuracy": 0.4,
+            "tokens_per_example": 17514.016666666666,
+            "component_accuracy": 0.4,
+            "mean_score_0_1_2": 0.8
+          }
+        },
+        "depth": {
+          "Q": {
+            "accuracy": 0.31666666666666665,
+            "tokens_per_example": 29081.366666666665,
+            "component_accuracy": 0.31666666666666665,
+            "mean_score_0_1_2": 0.6333333333333333
+          },
+          "E": {
+            "accuracy": 0.35,
+            "tokens_per_example": 24403.85,
+            "component_accuracy": 0.35,
+            "mean_score_0_1_2": 0.7
+          }
+        },
+        "horizon": {
+          "Q": {
+            "accuracy": 0.13333333333333333,
+            "tokens_per_example": 6482.416666666667,
+            "component_accuracy": 0.29791666666666666,
+            "mean_score_0_1_2": 0.8333333333333334
+          },
+          "E": {
+            "accuracy": 0.13333333333333333,
+            "tokens_per_example": 6482.416666666667,
+            "component_accuracy": 0.29791666666666666,
+            "mean_score_0_1_2": 0.8333333333333334
+          }
+        },
+        "parallel": {
+          "Q": {
+            "accuracy": 0.2,
+            "tokens_per_example": 29194.116666666665,
+            "component_accuracy": 0.5416666666666666,
+            "mean_score_0_1_2": 1.05
+          },
+          "E": {
+            "accuracy": 0.16666666666666666,
+            "tokens_per_example": 3665.0666666666666,
+            "component_accuracy": 0.5166666666666667,
+            "mean_score_0_1_2": 1.0
+          }
+        },
+        "robustness": {
+          "Q": {
+            "accuracy": 0.0,
+            "tokens_per_example": 10857.3,
+            "component_accuracy": 0.23095238095238096,
+            "mean_score_0_1_2": 0.7166666666666667
+          },
+          "E": {
+            "accuracy": 0.0,
+            "tokens_per_example": 10857.3,
+            "component_accuracy": 0.23095238095238096,
+            "mean_score_0_1_2": 0.7166666666666667
+          }
+        }
+      },
+      "macro_avg": {
+        "Q": {
+          "accuracy": {
+            "mean_across_five_axes": 0.20666666666666667,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "tokens_per_example": {
+            "mean_across_five_axes": 19191.546666666665,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "component_accuracy": {
+            "mean_across_five_axes": 0.35410714285714284,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "mean_score_0_1_2": {
+            "mean_across_five_axes": 0.8,
+            "n_axes": 5,
+            "seed": 0
+          }
+        },
+        "E": {
+          "accuracy": {
+            "mean_across_five_axes": 0.21,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "tokens_per_example": {
+            "mean_across_five_axes": 12584.529999999999,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "component_accuracy": {
+            "mean_across_five_axes": 0.35910714285714285,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "mean_score_0_1_2": {
+            "mean_across_five_axes": 0.81,
+            "n_axes": 5,
+            "seed": 0
+          }
+        }
+      }
+    },
+    "maas": {
+      "axes": {
+        "breadth": {
+          "Q": {
+            "accuracy": 0.35,
+            "tokens_per_example": 69064.75,
+            "component_accuracy": 0.35,
+            "mean_score_0_1_2": 0.7
+          },
+          "E": {
+            "accuracy": 0.35,
+            "tokens_per_example": 69064.75,
+            "component_accuracy": 0.35,
+            "mean_score_0_1_2": 0.7
+          }
+        },
+        "depth": {
+          "Q": {
+            "accuracy": 0.3,
+            "tokens_per_example": 63977.48333333333,
+            "component_accuracy": 0.3,
+            "mean_score_0_1_2": 0.6
+          },
+          "E": {
+            "accuracy": 0.3,
+            "tokens_per_example": 63977.48333333333,
+            "component_accuracy": 0.3,
+            "mean_score_0_1_2": 0.6
+          }
+        },
+        "horizon": {
+          "Q": {
+            "accuracy": 0.18333333333333332,
+            "tokens_per_example": 50544.4,
+            "component_accuracy": 0.32083333333333336,
+            "mean_score_0_1_2": 0.9
+          },
+          "E": {
+            "accuracy": 0.18333333333333332,
+            "tokens_per_example": 50544.4,
+            "component_accuracy": 0.32083333333333336,
+            "mean_score_0_1_2": 0.9
+          }
+        },
+        "parallel": {
+          "Q": {
+            "accuracy": 0.18333333333333332,
+            "tokens_per_example": 39981.816666666666,
+            "component_accuracy": 0.5625,
+            "mean_score_0_1_2": 1.1166666666666667
+          },
+          "E": {
+            "accuracy": 0.18333333333333332,
+            "tokens_per_example": 39981.816666666666,
+            "component_accuracy": 0.5625,
+            "mean_score_0_1_2": 1.1166666666666667
+          }
+        },
+        "robustness": {
+          "Q": {
+            "accuracy": 0.0,
+            "tokens_per_example": 49349.416666666664,
+            "component_accuracy": 0.02619047619047619,
+            "mean_score_0_1_2": 0.18333333333333332
+          },
+          "E": {
+            "accuracy": 0.0,
+            "tokens_per_example": 49349.416666666664,
+            "component_accuracy": 0.02619047619047619,
+            "mean_score_0_1_2": 0.18333333333333332
+          }
+        }
+      },
+      "macro_avg": {
+        "Q": {
+          "accuracy": {
+            "mean_across_five_axes": 0.2033333333333333,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "tokens_per_example": {
+            "mean_across_five_axes": 54583.573333333334,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "component_accuracy": {
+            "mean_across_five_axes": 0.3119047619047619,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "mean_score_0_1_2": {
+            "mean_across_five_axes": 0.7,
+            "n_axes": 5,
+            "seed": 0
+          }
+        },
+        "E": {
+          "accuracy": {
+            "mean_across_five_axes": 0.2033333333333333,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "tokens_per_example": {
+            "mean_across_five_axes": 54583.573333333334,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "component_accuracy": {
+            "mean_across_five_axes": 0.3119047619047619,
+            "n_axes": 5,
+            "seed": 0
+          },
+          "mean_score_0_1_2": {
+            "mean_across_five_axes": 0.7,
+            "n_axes": 5,
+            "seed": 0
+          }
+        }
+      }
+    }
+  },
+  "run_ids": [
+    "masbench:aflow:breadth:seed_0:masbench_external_protocol_v1",
+    "masbench:aflow:depth:seed_0:masbench_external_protocol_v1",
+    "masbench:aflow:horizon:seed_0:masbench_external_protocol_v1",
+    "masbench:aflow:parallel:seed_0:masbench_external_protocol_v1",
+    "masbench:aflow:robustness:seed_0:masbench_external_protocol_v1",
+    "masbench:maas:breadth:seed_0:masbench_external_protocol_v1",
+    "masbench:maas:depth:seed_0:masbench_external_protocol_v1",
+    "masbench:maas:horizon:seed_0:masbench_external_protocol_v1",
+    "masbench:maas:parallel:seed_0:masbench_external_protocol_v1",
+    "masbench:maas:robustness:seed_0:masbench_external_protocol_v1"
+  ],
+  "uncertainty_note": "Single search seed only: no across-seed standard deviation or significance claim is estimable."
+}

@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import math
+import re
 import sys
 import subprocess
 from datetime import datetime, timezone
@@ -33,6 +34,25 @@ BASELINE_REQUIRED = {
 BASELINE_COMMITS = {
     "aflow": "3f457218fc716093fe53f6df8a5d5e6379d66346",
     "maas": "987f3c1bc9a96e844fe090db3791446e3ef0f5c7",
+}
+RUNTIME_ADAPTER_FILES = {
+    "aflow": ("maas_context_guard.py",),
+    "maas": (
+        "maas_context_guard.py",
+        "maas_prompt_repair.py",
+        "maas_concise_prompts_v2.py",
+    ),
+}
+RECOVERED_MAAS_HELPER_SHA256 = {
+    "maas_prompt_repair.py": "dbfad9d7c66e1b80df18a2550a9c1c6a4766943d900d909810ed7bbc9fa2f63c",
+    "maas_concise_prompts_v2.py": "a4af1fd1f791b6b9fdb3a98c74c92418222ac3b80cc692b15ebe216b787f583f",
+}
+MAAS_PROMPT_ADAPTER_PROVENANCE = {
+    "prompt_adapter_origin": "recovered_rpas_working_copy",
+    "helper_source_repository": "Simplification555/RPAS-EC2-A100",
+    "helper_source_commit": "ba1ca711f148642f6e61bb38c52a0e8994e54c98",
+    "helper_source_path": "experiments/external_baselines/masbench_aflow_maas_seed0/experiments",
+    "original_helper_git_commit": None,
 }
 
 
@@ -163,7 +183,9 @@ def validate_run(run_dir: Path, rpas_root: Path | None = None) -> dict[str, Any]
         _fail_if(int(guard.get("calls_seen", 0)) <= 0, "context guard saw no model requests", errors)
 
     effective_rpas_root = rpas_root or (Path(manifest["rpas_root"]) if manifest.get("rpas_root") else None)
-    if effective_rpas_root is not None:
+    if effective_rpas_root is None or not effective_rpas_root.is_dir():
+        errors.append("RPAS source root is missing; runtime hashes cannot be verified")
+    else:
         data_root = effective_rpas_root / "data" / "masbench"
         for relative, expected_hash in manifest.get("data_sha256", {}).items():
             path = data_root / relative
@@ -175,6 +197,94 @@ def validate_run(run_dir: Path, rpas_root: Path | None = None) -> dict[str, Any]
         runner_path = effective_rpas_root / "experiments" / "native_masbench_external.py"
         if not runner_path.is_file() or sha256_file(runner_path) != manifest.get("runner_sha256"):
             errors.append("runner hash mismatch")
+        base_runner_path = effective_rpas_root / "experiments" / "native_aime_formal.py"
+        if not base_runner_path.is_file() or sha256_file(base_runner_path) != manifest.get("base_runner_sha256"):
+            errors.append("base runner hash mismatch")
+        runtime_hashes = manifest.get("runtime_adapter_sha256", {})
+        required_runtime_files = RUNTIME_ADAPTER_FILES.get(str(method), ())
+        if not isinstance(runtime_hashes, dict) or set(runtime_hashes) != set(required_runtime_files):
+            errors.append("runtime adapter hash inventory mismatch")
+        for name in required_runtime_files:
+            path = effective_rpas_root / "experiments" / name
+            if not path.is_file() or sha256_file(path) != (
+                runtime_hashes.get(name) if isinstance(runtime_hashes, dict) else None
+            ):
+                errors.append(f"runtime adapter hash mismatch: {name}")
+        if method == "maas" and isinstance(runtime_hashes, dict):
+            for name, expected_hash in RECOVERED_MAAS_HELPER_SHA256.items():
+                _fail_if(runtime_hashes.get(name) != expected_hash,
+                         f"MaAS recovered helper does not match pinned source: {name}", errors)
+        revisions_path = effective_rpas_root / "deployment/model_revisions.json"
+        model_assets = manifest.get("model_asset_provenance")
+        if not revisions_path.is_file() or not isinstance(model_assets, dict):
+            errors.append("model asset provenance is missing")
+        else:
+            specifications = json.loads(revisions_path.read_text(encoding="utf-8"))
+            _fail_if(model_assets.get("revisions_manifest_sha256") != sha256_file(revisions_path),
+                     "model revision manifest hash mismatch", errors)
+            required_models = ("qwen", "embedding") if method == "maas" else ("qwen",)
+            revisions = model_assets.get("revisions")
+            expected_revisions = {name: specifications[name]["revision"] for name in required_models}
+            _fail_if(revisions != expected_revisions, "model asset revisions differ from frozen pins", errors)
+            paths = model_assets.get("paths")
+            if not isinstance(paths, dict) or set(paths) != set(required_models) or any(
+                not isinstance(paths[name], str) or not Path(paths[name]).is_dir() for name in required_models
+            ):
+                errors.append("local model asset paths are missing")
+            verification = model_assets.get("verification_report")
+            if verification is not None:
+                if not isinstance(verification, dict):
+                    errors.append("model verification report reference is invalid")
+                else:
+                    report_path = Path(str(verification.get("path", "")))
+                    if not report_path.is_file() or sha256_file(report_path) != verification.get("sha256"):
+                        errors.append("model verification report hash mismatch")
+                    else:
+                        report = json.loads(report_path.read_text(encoding="utf-8"))
+                        _fail_if(report.get("manifest_sha256") != sha256_file(revisions_path),
+                                 "model verification report uses a different revision manifest", errors)
+                        for name in required_models:
+                            entry = report.get("models", {}).get(name, {})
+                            expected_files = {
+                                filename: digest for filename, (_, digest) in specifications[name]["files"].items()
+                            }
+                            _fail_if(entry.get("revision") != expected_revisions[name] or
+                                     entry.get("sha256_verified") != expected_files or
+                                     not isinstance(paths, dict) or entry.get("path") != paths.get(name),
+                                     f"model verification report does not match {name} provenance", errors)
+        session_reference = manifest.get("run_session_record")
+        if not isinstance(session_reference, dict):
+            errors.append("run session record is missing")
+        else:
+            session_path = Path(str(session_reference.get("path", "")))
+            if not session_path.is_file() or sha256_file(session_path) != session_reference.get("sha256"):
+                errors.append("run session record hash mismatch")
+            else:
+                session = json.loads(session_path.read_text(encoding="utf-8"))
+                _fail_if(session.get("project_root") != str(effective_rpas_root.resolve()),
+                         "run session record project root mismatch", errors)
+                if isinstance(model_assets, dict):
+                    revisions = model_assets.get("revisions", {})
+                    paths = model_assets.get("paths", {})
+                    verification = model_assets.get("verification_report", {})
+                    if not isinstance(revisions, dict):
+                        revisions = {}
+                    if not isinstance(paths, dict):
+                        paths = {}
+                    if not isinstance(verification, dict):
+                        verification = {}
+                    _fail_if(session.get("model_revision") != revisions.get("qwen") or
+                             not isinstance(session.get("model_path"), str) or
+                             not isinstance(paths.get("qwen"), str) or
+                             Path(session["model_path"]).resolve() != Path(paths["qwen"]).resolve() or
+                             session.get("model_verification_report_sha256") != verification.get("sha256"),
+                             "run session model provenance mismatch", errors)
+                    if method == "maas":
+                        _fail_if(session.get("embedding_revision") != revisions.get("embedding") or
+                                 not isinstance(session.get("embedding_path"), str) or
+                                 not isinstance(paths.get("embedding"), str) or
+                                 Path(session["embedding_path"]).resolve() != Path(paths["embedding"]).resolve(),
+                                 "run session embedding provenance mismatch", errors)
         selection_manifest_path = data_root / "manifest_search_select.json"
         expected_safe_manifest = manifest.get("data_sha256", {}).get("manifest_search_select.json")
         if not selection_manifest_path.is_file() or sha256_file(selection_manifest_path) != expected_safe_manifest:
@@ -258,6 +368,80 @@ def validate_run(run_dir: Path, rpas_root: Path | None = None) -> dict[str, Any]
         if checkpoint.is_file():
             _fail_if(sha256_file(checkpoint) != result.get("controller_checkpoint_sha256"),
                      "MaAS controller checkpoint hash mismatch", errors)
+        training = result.get("controller_training", {})
+        if not isinstance(training, dict):
+            training = {}
+        steps = training.get("optimizer_steps")
+        tensors = training.get("parameter_tensors")
+        changed = training.get("changed_parameter_tensors")
+        _fail_if(type(steps) is not int or steps < 1, "MaAS optimizer did not record a training step", errors)
+        _fail_if(type(tensors) is not int or tensors < 1, "MaAS controller parameter count is invalid", errors)
+        _fail_if(type(changed) is not int or changed < 1 or (
+            type(tensors) is int and changed > tensors
+        ), "MaAS controller has no verified parameter update", errors)
+        state_hashes = {
+            name: training.get(name) for name in (
+                "initial_state_sha256", "final_state_sha256", "checkpoint_state_sha256",
+            )
+        }
+        for name, digest in state_hashes.items():
+            _fail_if(not isinstance(digest, str) or re.fullmatch(r"[0-9a-f]{64}", digest) is None,
+                     f"MaAS controller {name} is missing or invalid", errors)
+        _fail_if(state_hashes["initial_state_sha256"] == state_hashes["final_state_sha256"],
+                 "MaAS controller state did not change during training", errors)
+        _fail_if(state_hashes["final_state_sha256"] != state_hashes["checkpoint_state_sha256"],
+                 "MaAS checkpoint state differs from trained controller", errors)
+        _fail_if(training.get("checkpoint_file_sha256") != result.get("controller_checkpoint_sha256"),
+                 "MaAS training audit checkpoint file hash mismatch", errors)
+        repeat_audits = result.get("telemetry", {}).get("training_repeat_audit")
+        expected_repeat = {
+            "native_sample_argument": 1,
+            "effective_repetitions": 4,
+            "examples_per_repetition": 24,
+            "observed_result_rows": 96,
+            "completed_repetitions": 4,
+        }
+        if not isinstance(repeat_audits, list) or len(repeat_audits) != 1 or not isinstance(repeat_audits[0], dict):
+            errors.append("MaAS native training repetition audit is missing")
+        else:
+            observed_repeat = repeat_audits[0]
+            if any(type(observed_repeat.get(name)) is not int or observed_repeat[name] != value
+                   for name, value in expected_repeat.items()):
+                errors.append("MaAS native training did not complete four 24-row repetitions")
+            _fail_if(training.get("training_repeat_audit") != observed_repeat,
+                     "MaAS controller training audit disagrees with native repetition telemetry", errors)
+        prompt_repairs = result.get("prompt_repairs")
+        if not isinstance(prompt_repairs, list) or len(prompt_repairs) != 2:
+            errors.append("MaAS train/test prompt repair audits are missing")
+        else:
+            repaired_splits: set[str] = set()
+            for repair in prompt_repairs:
+                if not isinstance(repair, dict):
+                    errors.append("MaAS prompt repair audit is malformed")
+                    continue
+                path = Path(str(repair.get("path", "")))
+                if not path.is_dir() or not path.resolve().is_relative_to(run_dir.resolve()):
+                    errors.append("MaAS prompt repair path is outside the run directory or missing")
+                    continue
+                repaired_splits.add(path.parent.name)
+                expected_template = (
+                    run_dir / "maas_repo/maas/ext/maas/scripts/optimized/MATH" /
+                    path.parent.name / "template"
+                )
+                _fail_if(path.resolve() != expected_template.resolve(),
+                         "MaAS prompt repair path is not the native MATH template", errors)
+                _fail_if(repair.get("concise_prompt_variant") != "native_repaired",
+                         "MaAS prompt repair variant is not the frozen native repair", errors)
+                _fail_if(repair.get("version") != "maas_context_guard_v1" or
+                         any(repair.get(key) != value for key, value in MAAS_PROMPT_ADAPTER_PROVENANCE.items()) or
+                         "original_helper_git_commit" not in repair,
+                         "MaAS prompt repair provenance is incorrect", errors)
+                for filename, field in (("prompt.py", "prompt_sha256"), ("op_prompt.py", "operator_sha256")):
+                    source = path / filename
+                    if not source.is_file() or sha256_file(source) != repair.get(field):
+                        errors.append(f"MaAS repaired {filename} hash mismatch")
+            _fail_if(repaired_splits != {"train", "test"},
+                     "MaAS prompt repairs do not cover both native train and test templates", errors)
     else:
         valid = [row for row in result.get("selection_rows", []) if row.get("status") == "evaluated"]
         _fail_if(not valid, "AFlow has no valid D_select candidate", errors)
